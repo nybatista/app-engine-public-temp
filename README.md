@@ -1,0 +1,157 @@
+# SpyneJS AppBuilder Project
+**Repository:** spynejs-starter-app
+
+Welcome to the ground floor of something big.  
+By generating this project with the **SpyneJS App Builder**, you’ve joined a growing group of early builders who are expanding what applications can be — not just for today’s needs, but for what’s coming next.
+
+This isn’t just a starter kit. It’s a launchpad for creating responsive, enterprise-grade applications powered by the **VBL (View–Behavior–Logic)** architecture — a structure designed to keep your code clean, your logic clear, and your creativity unbound.
+
+Whether you’re here to experiment, to ship, or to explore the limits of what the browser can do, you’re part of the group proving that frontend development can be both scalable and joyful.
+
+---
+
+## ✨ Features
+
+### 🔧 Webpack Dev/Prod Environments
+- **`npm start`** → Hot reload development server  
+- **`npm run build`** → Optimized production build
+
+### 🧩 SpyneJS “VBL” Structure
+- **View** → `.ViewStream` components for rendering  
+- **Behavior** → Channels for events/data flow  
+- **Logic** → Traits for shared and custom logic  
+- Clean separation of concerns for scalability and AI-aligned generation
+
+### 🎨 SCSS Integration
+- Full SCSS/SASS support out of the box
+- Includes **Spyne Grid System** for mobile-first, utility-driven layouts
+
+### 🧪 Unit Testing
+- Preconfigured with **Web-Test-Runner** using Mocha & Chai
+
+### 📏 Linting / Formatting
+- ESLint rules + recommended formatting for consistent code style
+
+---
+
+## 🚀 Getting Started
+
+Clone your generated app or run via **`spyne-cli`**:
+
+```bash
+git clone <your-generated-repo>
+cd <project-folder>
+npm install
+npm start
+```
+
+---
+
+## 📐 Spyne Grid System (Mobile-First)
+
+This project includes a lightweight, mobile-first grid system for rapid layout that avoids the complexity of large, utility-heavy frameworks.
+
+### Available Utilities
+
+| Utility              | Description |
+|----------------------|-------------|
+| `.grid-N`            | Grid container with N equal columns (2, 3, 4, 6, 12) |
+| `.col-N`             | Span N columns (1–12) — **mobile-first** |
+| `md:col-N`           | Span N columns at ≥ breakpoint |
+| `.row-N`             | Span N rows (1–12) |
+| `md:row-N`           | Span N rows at ≥ breakpoint |
+| `.order-N`           | Change item order (0–12) — works in flex/grid |
+| `md:order-N`         | Order override at ≥ breakpoint |
+| `.gap-N`             | Set grid gap using spacing scale from `variables.scss` |
+
+### Breakpoints
+| Prefix | Min-width |
+|--------|-----------|
+| `sm:`  | 640px     |
+| `md:`  | 768px     |
+| `lg:`  | 1024px    |
+| `xl:`  | 1280px    |
+
+### Example: Hero Layout
+
+**Side-by-side on desktop, stacked reverse on mobile:**
+```html
+<section class="page-hero grid-12 gap-0">
+  <div class="callout col-12 md:col-4 order-2 md:order-1">
+    <h1>Don’t Miss Out</h1>
+    <p>Take advantage of our exclusive resources and offers!</p>
+  </div>
+  <figure class="bg-image col-12 md:col-8 order-1 md:order-2">
+    <img src="hero.jpg" alt="">
+  </figure>
+</section>
+```
+
+- **Mobile (<768px)** → both span 12 cols, image above callout  
+- **Desktop (≥768px)** → callout = 4 cols left, image = 8 cols right  
+
+---
+
+## 📂 Project Structure
+
+```
+/src
+  /channels   → SpyneJS Channels (Behavior)
+  /components → ViewStreams (View)
+  /scss       → Styles (includes grid & tokens)
+  /traits     → SpyneTraits (Logic)
+  index.js    → App entry point
+```
+
+---
+
+## 🛠 Development Commands
+
+| Command              | Description |
+|----------------------|-------------|
+| `npm start`          | Start dev server with hot reload |
+| `npm run build`      | Build for production |
+| `npm test`           | Run unit tests |
+| `npm run lint`       | Lint source files |
+
+---
+
+## 📖 Resources
+
+- [SpyneJS Documentation](https://spynejs.com/docs)
+- [App Builder Guide](https://spynejs.com/docs/app-builder)
+- [VBL Architecture Overview](https://spynejs.com/docs/architecture/vbl)
+
+---
+
+© 2025 SpyneJS – Private Distribution
+
+
+---
+
+## 🎥 Tutorials (Coming Soon)
+
+We will be publishing a series of YouTube tutorials to help you get the most out of your generated SpyneJS applications.
+
+Planned topics include:
+1. **Using the Spyne-CLI to Generate Content**  
+   Learn how to quickly scaffold components, channels, and traits using the CLI.
+2. **Tracking and Viewing Application Behavior in the Channels Console**  
+   See how to monitor all application events and data flow through the SpyneJS Channels Console.
+3. **Premium CMS Access** *(Available Fall)*  
+   Premium customers will gain access to the integrated CMS for live content editing and WYSIWYG updates.  
+   **Access Link:** _To be provided in Fall_
+
+Subscribe to our channel to stay updated when these tutorials go live.
+
+---
+
+## 🎨 Styling & Design System
+
+This project comes with a SCSS-based **SpyneJS Design System** designed for enterprise-grade maintainability and rapid iteration.
+
+- **Token-Driven**: Colors, typography, and spacing are defined in a central variables file and exposed as both SCSS variables and CSS custom properties.
+- **Layout Utilities**: Includes a lightweight grid system and responsive utility classes for columns, rows, ordering, and gaps.
+- **Broad Layout Adjustments**: Apply sweeping layout changes by updating a few key tokens or grid settings—no need to refactor every component.
+
+More detailed documentation on the design system and theming options will be provided in a dedicated section soon.

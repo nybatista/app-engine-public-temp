@@ -1,0 +1,43 @@
+{{#}}
+<a
+  class="nav"
+  data-channel="ROUTE"
+  data-event-prevent-default="true"
+  data-page-id="{{pageId}}"
+  data-text="{{title}}"
+  data-end-route="true"
+  href="{{href}}"
+  >{{title}}</a
+>
+{{/}}
+
+<a
+  class="nav external"
+  href="https://spynejs.com"
+  target="_blank"
+  rel="noopener"
+  >Docs</a
+>
+
+<!-- GitHub Link -->
+<a
+  class="nav external"
+  href="https://github.com/spynejs"
+  target="_blank"
+  rel="noopener"
+>
+  <i class="fa-brands fa-github"></i>
+  <span class="sr-only">GitHub</span>
+</a>
+
+<!-- Light/Dark Toggle -->
+<button
+  id="theme-toggle"
+  data-event-type="setting"
+  data-settings-type="theme"
+  data-settings-value="light"
+  class="nav theme-toggle"
+  aria-label="Toggle Theme"
+>
+  <i class="fa-sharp fa-outline fa-moon"></i>
+</button>
