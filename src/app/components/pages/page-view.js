@@ -12,7 +12,6 @@ export class PageView extends ViewStream {
     props.traits = [PageItemCoreTraits, PageItemCustomTraits];
     props.data = safeClone(props.data);
     props.data.href = SpyneAppProperties.getHrefFromData(props.data);
-    //props.data.__cms__isProxy = true;
     props.template = PageTmpl;
 
     super(props);
