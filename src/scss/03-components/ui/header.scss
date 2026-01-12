@@ -58,9 +58,12 @@
   .theme-toggle {
     border-radius: 50%;
     border: none;
-    padding: 0.3rem 0.2rem 0.3rem 0.4rem;
+    padding: 0.15rem 0.1rem 0rem 0.2rem;
     cursor: pointer;
     align-self: center;
+    svg {
+      width: 16px;
+    }
   }
 
   .site-nav {
