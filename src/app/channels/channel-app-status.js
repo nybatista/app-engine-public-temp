@@ -12,7 +12,6 @@ export class ChannelAppStatus extends Channel {
 
   onRegistered() {
     this.appStatus$GetChannels();
-
     this.appSettings$InitSettingEvents();
   }
 

@@ -1,5 +1,7 @@
 import { SpyneTrait, ViewStream, SpyneAppProperties } from 'spyne';
 import { PageItemCustomTraits } from 'traits/page-item-custom-traits.js';
+import { HeroView } from 'components/page-items/hero-view.js';
+import { CardsContainerView } from 'components/page-items/cards-container-view.js';
 
 export class PageItemCoreTraits extends SpyneTrait {
   constructor(context) {
@@ -109,6 +111,25 @@ export class PageItemCoreTraits extends SpyneTrait {
     };
 
     elementsArr.forEach(addElement);
+  }
+
+  static pageItemCore$onRendered(props=this.props){
+    const { hero, pageItems, content, pageType } = props.data;
+
+    if (hero) {
+      this.appendView(new HeroView({ data: hero, pageType }), '.page-heading');
+    }
+
+    if (content) {
+      this.appendView(
+        new CardsContainerView({ data: content, pageType }),
+        '.page-body',
+      );
+    }
+
+    if (pageItems) {
+      this.pageItemCore$AddPageItems();
+    }
   }
 
   static pageItemCore$GetTemplate(
