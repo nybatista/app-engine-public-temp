@@ -10,8 +10,7 @@ export class StageView extends ViewStream {
     props.traits = [NavBreadcrumbTraits];
     props.channels = ['CHANNEL_APP_STATUS', 'CHANNEL_ROUTE'];
     props.template = `<div class="slot slot-ui"></div>
-<div class="slot slot-page  page-container "></div>
-`;
+                      <div class="slot slot-page  page-container "></div>`;
     super(props);
   }
 
