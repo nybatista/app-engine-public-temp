@@ -2,6 +2,7 @@
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+  min-width: 0;
 }
 
 .card-list {
@@ -11,13 +12,14 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  min-width: 0;
 }
 
 .card-list:has(> li:first-child:last-child) {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 
   .card {
-    width: calc(100vw - 3rem);
+    width: 100%;
     max-width: 550px;
     margin: 0 auto;
   }
@@ -27,7 +29,7 @@
   grid-template-columns: repeat(2, 1fr);
 
   .card {
-    width: calc(100vw - 3rem);
+    width: 100%;
     max-width: 550px;
     margin: 0 auto;
   }

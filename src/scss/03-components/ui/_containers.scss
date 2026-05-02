@@ -62,7 +62,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--#{$prefixVar}spacing-4) var(--#{$prefixVar}spacing-6);
+    padding-block: var(--#{$prefixVar}spacing-4);
+    padding-inline: 0;
     background-color: var(--#{$prefixVar}bg-base);
     border-bottom: 1px solid var(--#{$prefixVar}border);
   }
@@ -78,7 +79,8 @@
 
   footer#site-footer {
     margin-top: auto; // pushes footer to bottom
-    padding: var(--#{$prefixVar}spacing-4) var(--#{$prefixVar}spacing-6);
+    padding-block: var(--#{$prefixVar}spacing-4);
+    padding-inline: 0;
     background-color: var(--#{$prefixVar}surface);
     border-top: 1px solid var(--#{$prefixVar}border);
     color: var(--#{$prefixVar}text-secondary);
