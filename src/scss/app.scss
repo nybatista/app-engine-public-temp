@@ -35,6 +35,15 @@
 
 @include designSystem.inject-design-system('main#app');
 
+// temp csm mode fix
+body.spyne-plugin-cms-mode{
+  header#site-header{
+    width: 50vw;
+  }
+}
+
+
+
 // ---------------------------------------------
 // Inject utilities (scoped to #app to avoid global pollution)
 // ---------------------------------------------
