@@ -9,13 +9,13 @@ export class UIBreadcrumbComponent extends ViewStream {
     props.template = BCTmpl;
     props.traits = [NavBreadcrumbTraits];
 
-    props.channels = ['CHANNEL_APP_STATUS', 'CHANNEL_ROUTE'];
+    props.channels = ['CHANNEL_APP', 'CHANNEL_ROUTE'];
     props['aria-label'] = 'breadcrumb';
     super(props);
   }
 
   addActionListeners() {
-    return [['CHANNEL_APP_STATUS_INIT_EVENT', 'onAppInitEvent']];
+    return [['CHANNEL_APP_INIT_EVENT', 'onAppInitEvent']];
   }
 
   onAppInitEvent(e) {

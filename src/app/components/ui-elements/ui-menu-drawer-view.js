@@ -11,7 +11,7 @@ export class UIMenuDrawerView extends ViewStream {
     props.channels = [
       'CHANNEL_ROUTE',
       'CHANNEL_MENU_DRAWER',
-      'CHANNEL_APP_STATUS',
+      'CHANNEL_APP',
     ];
     props.template = MenuDrawerTmpl;
     super(props);

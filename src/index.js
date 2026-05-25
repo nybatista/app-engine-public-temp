@@ -6,7 +6,7 @@ import { SpyneApp, ChannelFetch, SpyneAppProperties } from 'spyne';
 
 // channels
 import { ChannelMenuDrawer } from 'channels/channel-menu-drawer';
-import { ChannelAppStatus } from 'channels/channel-app-status.js';
+import { ChannelApp } from 'channels/channel-app.js';
 import { ChannelLocalStorage } from 'channels/channel-local-storage.js';
 //plugins
 
@@ -67,7 +67,7 @@ const config = {
 SpyneApp.init(config);
 
 SpyneAppProperties.setProp('pageItemTemplateLookup', pageItemTemplateLookup);
-SpyneApp.registerChannel(new ChannelAppStatus());
+SpyneApp.registerChannel(new ChannelApp());
 SpyneApp.registerChannel(new ChannelLocalStorage());
 SpyneApp.registerChannel(new ChannelMenuDrawer());
 
@@ -75,7 +75,7 @@ const registerCmsChannels = () => {
   const mapFn = SpyneApp.pluginsFn.mapCmsData || ((d) => d);
 
   SpyneApp.registerChannel(
-    new ChannelFetch('CHANNEL_APP_MODEL', {
+    new ChannelFetch('CHANNEL_FETCH_MODEL', {
       url: AppModelURL,
       map: mapFn,
     }),

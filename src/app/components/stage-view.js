@@ -8,7 +8,7 @@ export class StageView extends ViewStream {
   constructor(props = {}) {
     props.id = 'stage-view';
     props.traits = [NavBreadcrumbTraits];
-    props.channels = ['CHANNEL_APP_STATUS', 'CHANNEL_ROUTE'];
+    props.channels = ['CHANNEL_APP', 'CHANNEL_ROUTE'];
     props.template = `<div class="slot slot-ui"></div>
                       <div class="slot slot-page  page-container "></div>`;
     super(props);
@@ -16,8 +16,8 @@ export class StageView extends ViewStream {
 
   addActionListeners() {
     return [
-      ['CHANNEL_APP_STATUS_INIT_EVENT', 'onAppInitEvent'],
-      ['CHANNEL_APP_STATUS_DATA_EVENT', 'onRouteEvent'],
+      ['CHANNEL_APP_INIT_EVENT', 'onAppInitEvent'],
+      ['CHANNEL_APP_PAGE_DATA_EVENT', 'onRouteEvent'],
     ];
   }
 

@@ -9,7 +9,7 @@ export class AppView extends ViewStream {
   constructor(props = {}) {
     props.tagName = 'main';
     props.id = 'app';
-    props.channels = ['CHANNEL_LOCAL_STORAGE', 'CHANNEL_APP_STATUS'];
+    props.channels = ['CHANNEL_LOCAL_STORAGE', 'CHANNEL_APP'];
     props.dataset = {};
 
     super(props);
@@ -21,7 +21,7 @@ export class AppView extends ViewStream {
         'CHANNEL_LOCAL_STORAGE_APP_SETTINGS_INITIALIZED_EVENT',
         'onLocalStorage',
       ],
-      ['CHANNEL_APP_STATUS_SETTING_EVENT', 'onSettingsEvent'],
+      ['CHANNEL_APP_SETTING_EVENT', 'onSettingsEvent'],
     ];
   }
 

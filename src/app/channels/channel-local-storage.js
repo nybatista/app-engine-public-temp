@@ -11,10 +11,10 @@ export class ChannelLocalStorage extends Channel {
 
   onRegistered() {
     const settinsPayloadFilter = new ChannelPayloadFilter({
-      action: 'CHANNEL_APP_STATUS_SETTING_EVENT',
+      action: 'CHANNEL_APP_SETTING_EVENT',
     });
 
-    this.getChannel('CHANNEL_APP_STATUS', settinsPayloadFilter).subscribe(
+    this.getChannel('CHANNEL_APP', settinsPayloadFilter).subscribe(
       this.onStatusSettingsEvent.bind(this),
     );
   }

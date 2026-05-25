@@ -8,7 +8,7 @@ export class UIHeaderNavView extends ViewStream {
     props.template = UIHeaderNavTmpl;
     props.channels = [
       'CHANNEL_ROUTE',
-      'CHANNEL_APP_STATUS',
+      'CHANNEL_APP',
       'CHANNEL_LOCAL_STORAGE',
     ];
     super(props);
@@ -26,11 +26,11 @@ export class UIHeaderNavView extends ViewStream {
       ],
 
       [
-        'CHANNEL_APP_STATUS_INIT_EVENT|CHANNEL_APP_STATUS_DATA_EVENT',
+        'CHANNEL_APP_INIT_EVENT|CHANNEL_APP_PAGE_DATA_EVENT',
         'onRouteChangeEvent',
       ],
 
-      ['CHANNEL_APP_STATUS_SETTING_EVENT', 'onSettingsEvent'],
+      ['CHANNEL_APP_SETTING_EVENT', 'onSettingsEvent'],
     ];
   }
 

@@ -8,13 +8,13 @@ export class UIHeaderView extends ViewStream {
     props.tagName = 'header';
     props.id = 'site-header';
     props.traits = [NavigationTraits];
-    props.channels = ['CHANNEL_APP_STATUS'];
+    props.channels = ['CHANNEL_APP'];
     props.template = UIHeaderTmpl;
     super(props);
   }
 
   addActionListeners() {
-    return [['CHANNEL_APP_STATUS_INIT_EVENT', 'onAppInitEvent']];
+    return [['CHANNEL_APP_INIT_EVENT', 'onAppInitEvent']];
   }
 
   onAppInitEvent(e) {

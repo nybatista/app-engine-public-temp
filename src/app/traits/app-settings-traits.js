@@ -11,7 +11,7 @@ export class AppSettingsTraits extends SpyneTrait {
 
     settingsValue = settingsValue === 'light' ? 'dark' : 'light';
 
-    const action = 'CHANNEL_APP_STATUS_SETTING_EVENT';
+    const action = 'CHANNEL_APP_SETTING_EVENT';
 
     this.sendChannelPayload(action, { settingsType, settingsValue });
   }

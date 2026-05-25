@@ -17,7 +17,7 @@ export class AppStatusTraits extends SpyneTrait {
   }
 
   static appStatus$GetChannels() {
-    this.mergeChannels(['CHANNEL_ROUTE', 'CHANNEL_APP_MODEL']).subscribe(
+    this.mergeChannels(['CHANNEL_ROUTE', 'CHANNEL_FETCH_MODEL']).subscribe(
       this.appStatus$OnDataReturned.bind(this),
     );
 
@@ -31,11 +31,11 @@ export class AppStatusTraits extends SpyneTrait {
   }
 
   static appStatus$OnDataReturned(e) {
-    this.props.data = e['CHANNEL_APP_MODEL'].payload;
+    this.props.data = e['CHANNEL_FETCH_MODEL'].payload;
     this.props.uiText = this.props.data?.text;
 
     const { navLinks, isDeepLink, routeData } = e['CHANNEL_ROUTE'].payload;
-    const { footer, header } = e['CHANNEL_APP_MODEL'].payload.text;
+    const { footer, header } = e['CHANNEL_FETCH_MODEL'].payload.text;
     this.props.initData = { navLinks, isDeepLink, routeData, footer, header };
 
     try {
@@ -78,8 +78,8 @@ export class AppStatusTraits extends SpyneTrait {
      * Select the appropriate app status event.
      */
     const action = isInitialData
-      ? 'CHANNEL_APP_STATUS_INIT_EVENT'
-      : 'CHANNEL_APP_STATUS_DATA_EVENT';
+      ? 'CHANNEL_APP_INIT_EVENT'
+      : 'CHANNEL_APP_PAGE_DATA_EVENT';
 
     /**
      * Normalize payload and attach explicit state flags.

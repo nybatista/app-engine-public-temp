@@ -4,12 +4,12 @@ export class UIFooterView extends ViewStream {
   constructor(props = {}) {
     props.tagName = 'footer';
     props.id = 'site-footer';
-    props.channels = ['CHANNEL_APP_STATUS'];
+    props.channels = ['CHANNEL_APP'];
     super(props);
   }
 
   addActionListeners() {
-    return [['CHANNEL_APP_STATUS_INIT_EVENT', 'onAppDataEvent']];
+    return [['CHANNEL_APP_INIT_EVENT', 'onAppDataEvent']];
   }
 
   onAppDataEvent(e) {

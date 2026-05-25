@@ -2,9 +2,9 @@ import { Channel } from 'spyne';
 import { AppStatusTraits } from 'traits/app-status-traits.js';
 import { AppSettingsTraits } from 'traits/app-settings-traits.js';
 
-export class ChannelAppStatus extends Channel {
+export class ChannelApp extends Channel {
   constructor(name, props = {}) {
-    name = 'CHANNEL_APP_STATUS';
+    name = 'CHANNEL_APP';
     props.sendCachedPayload = true;
     props.traits = [AppStatusTraits, AppSettingsTraits];
     super(name, props);
@@ -17,9 +17,9 @@ export class ChannelAppStatus extends Channel {
 
   addRegisteredActions() {
     return [
-      'CHANNEL_APP_STATUS_INIT_EVENT',
-      'CHANNEL_APP_STATUS_DATA_EVENT',
-      'CHANNEL_APP_STATUS_SETTING_EVENT',
+      'CHANNEL_APP_INIT_EVENT',
+      'CHANNEL_APP_PAGE_DATA_EVENT',
+      'CHANNEL_APP_SETTING_EVENT',
     ];
   }
 
