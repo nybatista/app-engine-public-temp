@@ -1,7 +1,9 @@
 import { SpyneTrait, ViewStream, SpyneAppProperties } from 'spyne';
-import { PageItemCustomTraits } from 'traits/page-item-custom-traits.js';
 import { HeroView } from 'components/page-items/hero-view.js';
 import { CardsContainerView } from 'components/page-items/cards-container-view.js';
+import {
+  FormContactUsView
+} from 'components/page-items/form-contact-us-view.js';
 
 export class PageItemCoreTraits extends SpyneTrait {
   constructor(context) {
@@ -96,7 +98,7 @@ export class PageItemCoreTraits extends SpyneTrait {
       const { props, container, viewClass, isPrototype } = obj;
       props.template = this.pageItemCore$GetTemplate(props, isPrototype);
 
-      const ViewClass = PageItemCustomTraits.pageItem$GetViewClass(viewClass);
+      const ViewClass = this.pageItemCore$GetViewClass(viewClass);
 
       const appendElSelector =
         this.pageItemCore$CheckToAddPageTraitContainer(container);
@@ -113,7 +115,7 @@ export class PageItemCoreTraits extends SpyneTrait {
     elementsArr.forEach(addElement);
   }
 
-  static pageItemCore$onRendered(props=this.props){
+  static pageItemCore$onRendered(props = this.props) {
     const { hero, pageItems, content, pageType } = props.data;
 
     if (hero) {
@@ -147,5 +149,12 @@ export class PageItemCoreTraits extends SpyneTrait {
       return templateLookup[template] || '<h1>Missing Template</h1>';
     }
     return template;
+  }
+
+  static pageItemCore$GetViewClass(viewClass = 'ViewStream') {
+    const classLookup = {
+      ContactUsView: FormContactUsView,
+    };
+    return classLookup[viewClass] || ViewStream;
   }
 }

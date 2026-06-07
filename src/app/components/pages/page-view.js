@@ -1,13 +1,12 @@
 import { ViewStream, safeClone, SpyneAppProperties } from 'spyne';
 import { PageItemCoreTraits } from 'traits/page-item-core-traits.js';
-import { PageItemCustomTraits } from 'traits/page-item-custom-traits.js';
 import PageTmpl from './templates/page.tmpl.html';
 
 export class PageView extends ViewStream {
   constructor(props = {}) {
     props.class = `page-view page-view-${props?.data?.pageId}`;
     props.channels = [['CHANNEL_ROUTE', true]];
-    props.traits = [PageItemCoreTraits, PageItemCustomTraits];
+    props.traits = [PageItemCoreTraits];
     props.data = safeClone(props.data);
     props.data.href = SpyneAppProperties.getHrefFromData(props.data);
     props.template = PageTmpl;

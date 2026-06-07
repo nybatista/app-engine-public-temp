@@ -4,12 +4,14 @@ import { UIMenuDrawerView } from 'components/ui-elements/ui-menu-drawer-view.js'
 import { StageView } from 'components/stage-view.js';
 import { UIFooterView } from 'components/ui-elements/ui-footer-view.js';
 import { LocalStorageNullView } from 'components/ui-elements/null-views/local-storage-null-view.js';
+import { AppViewTraits } from 'traits/app-view-traits.js';
 
 export class AppView extends ViewStream {
   constructor(props = {}) {
     props.tagName = 'main';
     props.id = 'app';
     props.channels = ['CHANNEL_LOCAL_STORAGE', 'CHANNEL_APP'];
+    props.traits = [AppViewTraits];
     props.dataset = {};
 
     super(props);
@@ -17,31 +19,9 @@ export class AppView extends ViewStream {
 
   addActionListeners() {
     return [
-      [
-        'CHANNEL_LOCAL_STORAGE_APP_SETTINGS_INITIALIZED_EVENT',
-        'onLocalStorage',
-      ],
-      ['CHANNEL_APP_SETTING_EVENT', 'onSettingsEvent'],
+      ['CHANNEL_LOCAL_STORAGE_APP_SETTINGS_INITIALIZED_EVENT',  'appSetup$OnLocalStorageEvent'],
+      ['CHANNEL_APP_SETTING_EVENT', 'appSetup$OnSettingsEvent'],
     ];
-  }
-
-  setTheme(theme = 'dark') {
-    this.props.el.dataset.theme = theme;
-  }
-
-  onSettingsEvent(e) {
-    const { settingsType } = e.payload;
-
-    if (settingsType === 'theme') {
-      const { theme } = this.props.el.dataset;
-      this.props.el.dataset.theme = theme === 'dark' ? 'light' : 'dark';
-    }
-  }
-
-  onLocalStorage(e) {
-    const { theme } = e.payload;
-    // this.props.el.dataset.theme='dark';
-    this.setTheme(theme);
   }
 
   onRendered() {
