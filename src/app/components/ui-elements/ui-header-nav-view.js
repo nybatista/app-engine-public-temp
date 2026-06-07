@@ -1,6 +1,6 @@
 import { ViewStream } from 'spyne';
 import UIHeaderNavTmpl from './templates/ui-header-nav-view.tmpl.html';
-import { NavigationTraits } from 'traits/navigation-traits.js';
+import {NavPrimaryViewTraits} from 'traits/nav-primary-view-traits.js';
 
 export class UIHeaderNavView extends ViewStream {
   constructor(props = {}) {
@@ -8,7 +8,7 @@ export class UIHeaderNavView extends ViewStream {
     props.tagName = 'nav';
     props['aria-label'] = 'Main Navigation';
     props.template = UIHeaderNavTmpl;
-    props.traits = [NavigationTraits];
+    props.traits = [NavPrimaryViewTraits];
     props.channels = [
       'CHANNEL_ROUTE',
       'CHANNEL_APP',

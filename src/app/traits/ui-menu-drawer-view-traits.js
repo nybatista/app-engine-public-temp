@@ -1,26 +1,26 @@
 import { SpyneTrait, ViewStream } from 'spyne';
 import { UIMenuDrawerNavView } from 'components/ui-elements/ui-menu-drawer-nav-view.js';
 
-export class NavMenuDrawerTraits extends SpyneTrait {
+export class UIMenuDrawerViewTraits extends SpyneTrait {
   constructor(context) {
-    let traitPrefix = 'menuDrawer$';
+    let traitPrefix = 'uiMenuDrawer$';
     super(context, traitPrefix);
   }
 
-  static menuDrawer$addContent(e) {
+  static uiMenuDrawer$addContent(e) {
     const data = e.payload.initData.navLinks;
     this.appendView(new UIMenuDrawerNavView({ data }));
-    this.menuDrawer$SetActiveLink(e);
+    this.uiMenuDrawer$SetActiveLink(e);
   }
 
-  static menuDrawer$onShowMenuDrawerEvent(e) {
+  static uiMenuDrawer$onShowMenuDrawerEvent(e) {
     const { action } = e;
     const showDrawer = action === 'CHANNEL_MENU_DRAWER__SHOW_EVENT';
     this.props.el$.toggleClass('open', showDrawer);
-    this.menuDrawer$SetActiveLink(e);
+    this.uiMenuDrawer$SetActiveLink(e);
   }
 
-  static menuDrawer$SetActiveLink(e) {
+  static uiMenuDrawer$SetActiveLink(e) {
     const { routeData } = e.payload;
     if (routeData === undefined) {
       return;

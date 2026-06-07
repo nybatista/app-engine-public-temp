@@ -1,12 +1,12 @@
 import { ViewStream } from 'spyne';
 import MenuDrawerTmpl from './templates/ui-menu-drawer.tmpl.html';
-import { NavMenuDrawerTraits } from 'traits/nav-menu-drawer-traits.js';
+import { UIMenuDrawerViewTraits } from 'traits/ui-menu-drawer-view-traits.js';
 
 export class UIMenuDrawerView extends ViewStream {
   constructor(props = {}) {
     props.id = 'menu-drawer';
     props.class = 'menu-drawer';
-    props.traits = [NavMenuDrawerTraits];
+    props.traits = [UIMenuDrawerViewTraits];
 
     props.channels = [
       'CHANNEL_ROUTE',
@@ -19,9 +19,9 @@ export class UIMenuDrawerView extends ViewStream {
 
   addActionListeners() {
     return [
-      ['CHANNEL_MENU_DRAWER_INIT_EVENT', 'menuDrawer$addContent'],
-      ['CHANNEL_ROUTE_CHANGE_EVENT', 'menuDrawer$SetActiveLink'],
-      ['CHANNEL_MENU_DRAWER__.*_EVENT', 'menuDrawer$onShowMenuDrawerEvent'],
+      ['CHANNEL_MENU_DRAWER_INIT_EVENT', 'uiMenuDrawer$addContent'],
+      ['CHANNEL_ROUTE_CHANGE_EVENT', 'uiMenuDrawer$SetActiveLink'],
+      ['CHANNEL_MENU_DRAWER__.*_EVENT', 'uiMenuDrawer$onShowMenuDrawerEvent'],
     ];
   }
 

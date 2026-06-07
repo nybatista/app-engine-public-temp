@@ -1,5 +1,5 @@
 import { ViewStream } from 'spyne';
-import { UIBreadcrumbTraits } from 'traits/ui-breadcrumb-traits.js';
+import { NavBreadcrumbViewTraits } from 'traits/nav-breadcrumb-view-traits.js';
 import BCTmpl from './templates/ui-breadcrumb-component.tmpl.html';
 
 export class UIBreadcrumbComponent extends ViewStream {
@@ -7,7 +7,7 @@ export class UIBreadcrumbComponent extends ViewStream {
     props.tagName = 'nav';
     props.class = 'breadcrumbs';
     props.template = BCTmpl;
-    props.traits = [UIBreadcrumbTraits];
+    props.traits = [NavBreadcrumbViewTraits];
 
     props.channels = ['CHANNEL_APP', 'CHANNEL_ROUTE'];
     props['aria-label'] = 'breadcrumb';
@@ -15,7 +15,7 @@ export class UIBreadcrumbComponent extends ViewStream {
   }
 
   addActionListeners() {
-    return [['CHANNEL_APP_INIT_EVENT', 'breadcrumb$OnAppInitEvent']];
+    return [['CHANNEL_APP_INIT_EVENT', 'navBreadcrumb$OnAppInitEvent']];
   }
 
   broadcastEvents() {

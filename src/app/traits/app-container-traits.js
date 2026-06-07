@@ -9,22 +9,22 @@ import {
   LocalStorageNullView
 } from 'components/ui-elements/null-views/local-storage-null-view.js';
 
-export class AppViewTraits extends SpyneTrait {
+export class AppContainerTraits extends SpyneTrait {
   constructor(context) {
-    let traitPrefix = 'appSetup$';
+    let traitPrefix = 'app$';
     super(context, traitPrefix);
   }
 
-  static appSetup$SetTheme(theme = 'dark', props = this.props) {
+  static app$SetTheme(theme = 'dark', props = this.props) {
     props.el.dataset.theme = theme;
   }
 
-  static appSetup$OnLocalStorageEvent(e){
+  static app$OnLocalStorageEvent(e){
     const { theme } = e.payload;
-    this.appSetup$SetTheme(theme);
+    this.app$SetTheme(theme);
   }
 
-  static appSetup$OnSettingsEvent(e){
+  static app$OnSettingsEvent(e){
     const { settingsType } = e.payload;
 
     if (settingsType === 'theme') {
@@ -33,7 +33,7 @@ export class AppViewTraits extends SpyneTrait {
     }
   }
 
-  static appSetup$OnAppViewRendered(){
+  static app$OnAppViewRendered(){
     this.appendView(new UIHeaderView());
     this.appendView(new UIMenuDrawerView());
     this.appendView(new StageView());

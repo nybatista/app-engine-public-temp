@@ -14,7 +14,7 @@ import { ChannelLocalStorage } from 'channels/channel-local-storage.js';
 import AppModelURL from 'data/app.model.json';
 
 // initial view
-import { AppView } from './app/app-view.js';
+import { AppContainer } from './app/app-container.js';
 
 import pageItemTemplateLookup from 'traits/utils/page-item-template-lookup.js';
 
@@ -91,4 +91,4 @@ if (process.env.NODE_ENV === 'development') {
   registerCmsChannels();
 }
 
-new AppView().prependToDom(document.querySelector('body'));
+new AppContainer().prependToDom(document.querySelector('body'));

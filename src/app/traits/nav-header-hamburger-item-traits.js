@@ -1,12 +1,12 @@
 import { SpyneTrait } from 'spyne';
 
-export class NavHamburgerTraits extends SpyneTrait {
+export class NavHeaderHamburgerItemTraits extends SpyneTrait {
   constructor(context) {
-    let traitPrefix = 'navHamburger$';
+    let traitPrefix = 'navHeaderHamburgerItem$';
     super(context, traitPrefix);
   }
 
-  static navHamburger$OnShowMenuDrawerEvent(e) {
+  static navHeaderHamburgerItem$OnShowMenuDrawerEvent(e) {
     const { action } = e;
     const isActiveBurger = action === 'CHANNEL_MENU_DRAWER__SHOW_EVENT';
     this.props.el$.toggleClass('open', isActiveBurger);

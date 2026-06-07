@@ -1,79 +1,15 @@
 import { SpyneTrait } from 'spyne';
 import { UIBreadcrumbView } from 'components/ui-elements/ui-breadcrumb-view.js';
 import { pick } from 'ramda';
-export class UIBreadcrumbTraits extends SpyneTrait {
+export class NavBreadcrumbItemTraits extends SpyneTrait {
   constructor(context) {
-    let traitPrefix = 'breadcrumb$';
+    let traitPrefix = 'navBreadcrumbItem$';
 
     super(context, traitPrefix);
   }
 
-  static breadcrumb$HelloWorld() {
-    return 'Hello World';
-  }
 
-  static breadcrumb$getBreadcrumbObjs(navLinks) {
-    const OMIT_KEYS = new Set(['title', 'href', 'navLevel']);
-    const encountered = new Set(); // track which properties we've already assigned
-    const bcMap = new Map(); // maps navLevel -> { navLevel, bcProps: [] }
-
-    // Sort by navLevel ascending
-    const sortedLinks = [...navLinks].sort((a, b) => a.navLevel - b.navLevel);
-
-    for (const link of sortedLinks) {
-      const { navLevel } = link;
-
-      // If we haven't seen this navLevel yet, create an entry
-      if (!bcMap.has(navLevel)) {
-        bcMap.set(navLevel, { navLevel, bcProps: [] });
-      }
-
-      // Check each property in the link object
-      for (const [key, value] of Object.entries(link)) {
-        // Skip if it's an omitted key or already encountered or empty string
-        if (
-          OMIT_KEYS.has(key) ||
-          encountered.has(key) ||
-          key === 'undefined' ||
-          value === ''
-        ) {
-          continue;
-        }
-
-        // Otherwise, mark this key as encountered
-        encountered.add(key);
-        // Add it to the bcProps array for this navLevel
-        bcMap.get(navLevel).bcProps.push(key);
-      }
-    }
-
-    // Convert the map to an array sorted by navLevel
-    return Array.from(bcMap.values()).sort((a, b) => a.navLevel - b.navLevel);
-  }
-
-  static breadcrumb$initBreadcrumbs(e) {
-    const { navLinks, routeData } = e.payload;
-
-    const breacrumbObjs = this.breadcrumb$getBreadcrumbObjs(navLinks);
-
-    const addBreadcrumbs = (bcObj) => {
-      const { bcProps, navLevel } = bcObj;
-      this.appendView(
-        new UIBreadcrumbView({
-          bcProps,
-          navLevel,
-          navLinks,
-          initPayload: e.payload,
-          routeData,
-        }),
-        '.breadcrumbs-list',
-      );
-    };
-
-    breacrumbObjs.forEach(addBreadcrumbs);
-  }
-
-  static breadcrumb$GetRouteState(payload, props = this.props) {
+  static navBreadcrumbItem$GetRouteState(payload, props = this.props) {
     const { bcProps, navLevel, navLinks } = props;
     const { paths = [], pathInnermost } = payload;
     const { pageId, topicId, optionId } = payload?.routeData || {};
@@ -103,7 +39,7 @@ export class UIBreadcrumbTraits extends SpyneTrait {
     };
   }
 
-  static breadcrumb$GetState(payload, props = this.props) {
+  static navBreadcrumbItem$GetState(payload, props = this.props) {
     const {
       isHome,
       isCurrentPath,
@@ -111,7 +47,7 @@ export class UIBreadcrumbTraits extends SpyneTrait {
       bcProps,
       navLevel,
       navLinks,
-    } = this.breadcrumb$GetRouteState(payload, props);
+    } = this.navBreadcrumbItem$GetRouteState(payload, props);
 
     // Visible if not home and the route includes any of our bcProps
     const isVisible = !isHome && isCurrentPath;
@@ -127,7 +63,7 @@ export class UIBreadcrumbTraits extends SpyneTrait {
     const bcValues = bcProps.map((prop) => payload?.routeData?.[prop]);
 
     // Look up the corresponding nav link in navLinks
-    const navLink = this.breadcrumb$FindNavLink(
+    const navLink = this.navBreadcrumbItem$FindNavLink(
       { bcProps, bcValues, navLevel },
       navLinks,
     );
@@ -135,7 +71,7 @@ export class UIBreadcrumbTraits extends SpyneTrait {
     return { isVisible, isActive, bcProps, bcValues, navLevel, navLink };
   }
 
-  static breadcrumb$FindNavLink(filterData, navLinks = this.props.navLinks) {
+  static navBreadcrumbItem$FindNavLink(filterData, navLinks = this.props.navLinks) {
     const { bcProps, bcValues, navLevel } = filterData;
     return navLinks.find((link) => {
       if (link.navLevel !== navLevel) return false;
@@ -144,7 +80,7 @@ export class UIBreadcrumbTraits extends SpyneTrait {
     });
   }
 
-  static breadcrumb$getBreadcrumbLinkClass({
+  static navBreadcrumbItem$getBreadcrumbLinkClass({
     isVisible = true,
     isActive = true,
   } = {}) {
@@ -157,12 +93,12 @@ export class UIBreadcrumbTraits extends SpyneTrait {
       .join(' ');
   }
 
-  static breadcrumb$UpdateLink(e) {
+  static navBreadcrumbItem$UpdateLink(e) {
     const { payload } = e;
     const { paths } = payload;
-    const bcState = this.breadcrumb$GetState(payload);
+    const bcState = this.navBreadcrumbItem$GetState(payload);
     const { isVisible, isActive, navLink, bcProps } = bcState;
-    const breadcrumbClass = this.breadcrumb$getBreadcrumbLinkClass({
+    const breadcrumbClass = this.navBreadcrumbItem$getBreadcrumbLinkClass({
       isVisible,
       isActive,
     });
@@ -206,18 +142,15 @@ export class UIBreadcrumbTraits extends SpyneTrait {
     }
   }
 
-  breadcrumb$UIBreadcrumbViewOnRendered(){
+  navBreadcrumbItem$UIBreadcrumbOnRendered(){
     this.props.link$ = this.props.el$('a');
     this.props.linkData = this.props.link$.el.dataset;
 
     if (this.props.initPayload) {
-      this.breadcrumb$UpdateLink({ payload: this.props.initPayload });
+      this.navBreadcrumbItem$UpdateLink({ payload: this.props.initPayload });
     }
   }
 
-  breadcrumb$OnAppInitEvent(e){
-    const payload = e.payload.initData;
-    this.breadcrumb$initBreadcrumbs({ payload });
-  }
+
 
 }

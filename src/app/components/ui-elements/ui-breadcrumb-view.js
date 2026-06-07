@@ -1,18 +1,18 @@
 import { ViewStream } from 'spyne';
-import { UIBreadcrumbTraits } from 'traits/ui-breadcrumb-traits.js';
+import { NavBreadcrumbItemTraits } from 'traits/nav-breadcrumb-item-traits.js';
 import BreadcrumbTmpl from './templates/ui-breadcrumb-view.tmpl.html';
 export class UIBreadcrumbView extends ViewStream {
   constructor(props = {}) {
     props.tagName = 'li';
     props.class = 'breadcrumb-item';
-    props.traits = [UIBreadcrumbTraits];
+    props.traits = [NavBreadcrumbItemTraits];
     props.channels = ['CHANNEL_ROUTE'];
     props.template = BreadcrumbTmpl;
     super(props);
   }
 
   addActionListeners() {
-    return [['CHANNEL_ROUTE_.*_EVENT', 'breadcrumb$UpdateLink']];
+    return [['CHANNEL_ROUTE_.*_EVENT', 'navBreadcrumbItem$UpdateLink']];
   }
 
   broadcastEvents() {
@@ -20,6 +20,6 @@ export class UIBreadcrumbView extends ViewStream {
   }
 
   onRendered() {
-    this.breadcrumb$UIBreadcrumbViewOnRendered();
+    this.navBreadcrumbItem$UIBreadcrumbOnRendered();
   }
 }

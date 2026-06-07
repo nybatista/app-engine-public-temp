@@ -7,7 +7,7 @@ import {
   payloadDesignButtonPrimary,
   payloadCardFlyingTech,
 } from '../mocks/route-mocks.js';
-import { BreadcrumbTraits } from '/src/app/traits/ui-breadcrumb-traits.js';
+import { BreadcrumbTraits } from '/src/app/traits/nav-breadcrumb-view-traits.js';
 import { add } from 'ramda';
 
 const propsPage = {
@@ -24,22 +24,22 @@ const propsCard = {
 
 describe('should test that breadrumb traits exists ', () => {
   it('should return hw from breadrumb traits', () => {
-    const hw = BreadcrumbTraits.breadcrumb$HelloWorld();
+    const hw = BreadcrumbTraits.navBreadcrumb$HelloWorld();
     expect(hw).to.eq('Hello World');
   });
 
   it('should init breadcrumb objects based on navLinks', () => {
     const breadcrumbObjs =
-      BreadcrumbTraits.breadcrumb$getBreadcrumbObjs(navLinks);
+      BreadcrumbTraits.navBreadcrumb$getBreadcrumbObjs(navLinks);
   });
 
   it('should find home visible states', () => {
-    const isVisiblePage = BreadcrumbTraits.breadcrumb$GetState(
+    const isVisiblePage = BreadcrumbTraits.navBreadcrumb$GetState(
       payloadHome,
       propsPage,
     );
 
-    const isVisibleCard = BreadcrumbTraits.breadcrumb$GetState(
+    const isVisibleCard = BreadcrumbTraits.navBreadcrumb$GetState(
       payloadHome,
       propsCard,
     );
@@ -49,12 +49,12 @@ describe('should test that breadrumb traits exists ', () => {
   });
 
   it('should find about visible states', () => {
-    const isVisiblePage = BreadcrumbTraits.breadcrumb$GetState(
+    const isVisiblePage = BreadcrumbTraits.navBreadcrumb$GetState(
       payloadAbout,
       propsPage,
     );
 
-    const isVisibleCard = BreadcrumbTraits.breadcrumb$GetState(
+    const isVisibleCard = BreadcrumbTraits.navBreadcrumb$GetState(
       payloadAbout,
       propsCard,
     );
@@ -64,12 +64,12 @@ describe('should test that breadrumb traits exists ', () => {
   });
 
   it('should find card visible states', () => {
-    const isVisiblePage = BreadcrumbTraits.breadcrumb$GetState(
+    const isVisiblePage = BreadcrumbTraits.navBreadcrumb$GetState(
       payloadCardFlyingTech,
       propsPage,
     );
 
-    const isVisibleCard = BreadcrumbTraits.breadcrumb$GetState(
+    const isVisibleCard = BreadcrumbTraits.navBreadcrumb$GetState(
       payloadCardFlyingTech,
       propsCard,
     );
@@ -79,12 +79,12 @@ describe('should test that breadrumb traits exists ', () => {
   });
 
   it('should find page home active states', () => {
-    const isActivePage = BreadcrumbTraits.breadcrumb$GetState(
+    const isActivePage = BreadcrumbTraits.navBreadcrumb$GetState(
       payloadHome,
       propsPage,
     );
 
-    const isActiveCard = BreadcrumbTraits.breadcrumb$GetState(
+    const isActiveCard = BreadcrumbTraits.navBreadcrumb$GetState(
       payloadHome,
       propsCard,
     );
@@ -94,12 +94,12 @@ describe('should test that breadrumb traits exists ', () => {
   });
 
   it('should find page about active states', () => {
-    const isActivePage = BreadcrumbTraits.breadcrumb$GetState(
+    const isActivePage = BreadcrumbTraits.navBreadcrumb$GetState(
       payloadAbout,
       propsPage,
     );
 
-    const isActiveCard = BreadcrumbTraits.breadcrumb$GetState(
+    const isActiveCard = BreadcrumbTraits.navBreadcrumb$GetState(
       payloadAbout,
       propsCard,
     );
@@ -109,12 +109,12 @@ describe('should test that breadrumb traits exists ', () => {
   });
 
   it('should find card  active state', () => {
-    const isActivePage = BreadcrumbTraits.breadcrumb$GetState(
+    const isActivePage = BreadcrumbTraits.navBreadcrumb$GetState(
       payloadCardFlyingTech,
       propsPage,
     );
 
-    const isActiveCard = BreadcrumbTraits.breadcrumb$GetState(
+    const isActiveCard = BreadcrumbTraits.navBreadcrumb$GetState(
       payloadCardFlyingTech,
       propsCard,
     );
@@ -124,12 +124,12 @@ describe('should test that breadrumb traits exists ', () => {
   });
 
   it('should get page home linkData', () => {
-    const bcPageData = BreadcrumbTraits.breadcrumb$GetState(
+    const bcPageData = BreadcrumbTraits.navBreadcrumb$GetState(
       payloadHome,
       propsPage,
     );
 
-    const bcCardData = BreadcrumbTraits.breadcrumb$GetState(
+    const bcCardData = BreadcrumbTraits.navBreadcrumb$GetState(
       payloadHome,
       propsCard,
     );
@@ -139,12 +139,12 @@ describe('should test that breadrumb traits exists ', () => {
   });
 
   it('should get page about linkData', () => {
-    const bcPageData = BreadcrumbTraits.breadcrumb$GetState(
+    const bcPageData = BreadcrumbTraits.navBreadcrumb$GetState(
       payloadAbout,
       propsPage,
     );
 
-    const bcCardData = BreadcrumbTraits.breadcrumb$GetState(
+    const bcCardData = BreadcrumbTraits.navBreadcrumb$GetState(
       payloadAbout,
       propsCard,
     );
@@ -154,12 +154,12 @@ describe('should test that breadrumb traits exists ', () => {
   });
 
   it('should get card linkData', () => {
-    const bcPageData = BreadcrumbTraits.breadcrumb$GetState(
+    const bcPageData = BreadcrumbTraits.navBreadcrumb$GetState(
       payloadCardFlyingTech,
       propsPage,
     );
 
-    const bcCardData = BreadcrumbTraits.breadcrumb$GetState(
+    const bcCardData = BreadcrumbTraits.navBreadcrumb$GetState(
       payloadCardFlyingTech,
       propsCard,
     );
@@ -169,16 +169,16 @@ describe('should test that breadrumb traits exists ', () => {
   });
 
   it('should return the correct breadcrumb class', () => {
-    const isHiddenBC = BreadcrumbTraits.breadcrumb$getBreadcrumbLinkClass({
+    const isHiddenBC = BreadcrumbTraits.navBreadcrumb$getBreadcrumbLinkClass({
       isVisible: false,
       isActive: false,
     });
-    const isVisibleBC = BreadcrumbTraits.breadcrumb$getBreadcrumbLinkClass({
+    const isVisibleBC = BreadcrumbTraits.navBreadcrumb$getBreadcrumbLinkClass({
       isVisible: true,
       isActive: false,
     });
     const isVisibleAndActiveBC =
-      BreadcrumbTraits.breadcrumb$getBreadcrumbLinkClass({
+      BreadcrumbTraits.navBreadcrumb$getBreadcrumbLinkClass({
         isVisible: true,
         isActive: true,
       });
