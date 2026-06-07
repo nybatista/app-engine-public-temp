@@ -7,7 +7,8 @@ import {
   payloadDesignButtonPrimary,
   payloadCardFlyingTech,
 } from '../mocks/route-mocks.js';
-import { BreadcrumbTraits } from '/src/app/traits/nav-breadcrumb-view-traits.js';
+import { NavBreadcrumbViewTraits } from '/src/app/traits/nav/nav-breadcrumb-view-traits.js';
+import { NavBreadcrumbItemTraits } from '/src/app/traits/nav/nav-breadcrumb-item-traits.js';
 import { add } from 'ramda';
 
 const propsPage = {
@@ -23,23 +24,18 @@ const propsCard = {
 };
 
 describe('should test that breadrumb traits exists ', () => {
-  it('should return hw from breadrumb traits', () => {
-    const hw = BreadcrumbTraits.navBreadcrumb$HelloWorld();
-    expect(hw).to.eq('Hello World');
-  });
-
   it('should init breadcrumb objects based on navLinks', () => {
     const breadcrumbObjs =
-      BreadcrumbTraits.navBreadcrumb$getBreadcrumbObjs(navLinks);
+      NavBreadcrumbViewTraits.navBreadcrumb$getBreadcrumbObjs(navLinks);
   });
 
   it('should find home visible states', () => {
-    const isVisiblePage = BreadcrumbTraits.navBreadcrumb$GetState(
+    const isVisiblePage = NavBreadcrumbItemTraits.navBreadcrumbItem$GetState(
       payloadHome,
       propsPage,
     );
 
-    const isVisibleCard = BreadcrumbTraits.navBreadcrumb$GetState(
+    const isVisibleCard = NavBreadcrumbItemTraits.navBreadcrumbItem$GetState(
       payloadHome,
       propsCard,
     );
@@ -49,12 +45,12 @@ describe('should test that breadrumb traits exists ', () => {
   });
 
   it('should find about visible states', () => {
-    const isVisiblePage = BreadcrumbTraits.navBreadcrumb$GetState(
+    const isVisiblePage = NavBreadcrumbItemTraits.navBreadcrumbItem$GetState(
       payloadAbout,
       propsPage,
     );
 
-    const isVisibleCard = BreadcrumbTraits.navBreadcrumb$GetState(
+    const isVisibleCard = NavBreadcrumbItemTraits.navBreadcrumbItem$GetState(
       payloadAbout,
       propsCard,
     );
@@ -64,12 +60,12 @@ describe('should test that breadrumb traits exists ', () => {
   });
 
   it('should find card visible states', () => {
-    const isVisiblePage = BreadcrumbTraits.navBreadcrumb$GetState(
+    const isVisiblePage = NavBreadcrumbItemTraits.navBreadcrumbItem$GetState(
       payloadCardFlyingTech,
       propsPage,
     );
 
-    const isVisibleCard = BreadcrumbTraits.navBreadcrumb$GetState(
+    const isVisibleCard = NavBreadcrumbItemTraits.navBreadcrumbItem$GetState(
       payloadCardFlyingTech,
       propsCard,
     );
@@ -79,12 +75,12 @@ describe('should test that breadrumb traits exists ', () => {
   });
 
   it('should find page home active states', () => {
-    const isActivePage = BreadcrumbTraits.navBreadcrumb$GetState(
+    const isActivePage = NavBreadcrumbItemTraits.navBreadcrumbItem$GetState(
       payloadHome,
       propsPage,
     );
 
-    const isActiveCard = BreadcrumbTraits.navBreadcrumb$GetState(
+    const isActiveCard = NavBreadcrumbItemTraits.navBreadcrumbItem$GetState(
       payloadHome,
       propsCard,
     );
@@ -94,12 +90,12 @@ describe('should test that breadrumb traits exists ', () => {
   });
 
   it('should find page about active states', () => {
-    const isActivePage = BreadcrumbTraits.navBreadcrumb$GetState(
+    const isActivePage = NavBreadcrumbItemTraits.navBreadcrumbItem$GetState(
       payloadAbout,
       propsPage,
     );
 
-    const isActiveCard = BreadcrumbTraits.navBreadcrumb$GetState(
+    const isActiveCard = NavBreadcrumbItemTraits.navBreadcrumbItem$GetState(
       payloadAbout,
       propsCard,
     );
@@ -109,12 +105,12 @@ describe('should test that breadrumb traits exists ', () => {
   });
 
   it('should find card  active state', () => {
-    const isActivePage = BreadcrumbTraits.navBreadcrumb$GetState(
+    const isActivePage = NavBreadcrumbItemTraits.navBreadcrumbItem$GetState(
       payloadCardFlyingTech,
       propsPage,
     );
 
-    const isActiveCard = BreadcrumbTraits.navBreadcrumb$GetState(
+    const isActiveCard = NavBreadcrumbItemTraits.navBreadcrumbItem$GetState(
       payloadCardFlyingTech,
       propsCard,
     );
@@ -124,12 +120,12 @@ describe('should test that breadrumb traits exists ', () => {
   });
 
   it('should get page home linkData', () => {
-    const bcPageData = BreadcrumbTraits.navBreadcrumb$GetState(
+    const bcPageData = NavBreadcrumbItemTraits.navBreadcrumbItem$GetState(
       payloadHome,
       propsPage,
     );
 
-    const bcCardData = BreadcrumbTraits.navBreadcrumb$GetState(
+    const bcCardData = NavBreadcrumbItemTraits.navBreadcrumbItem$GetState(
       payloadHome,
       propsCard,
     );
@@ -139,12 +135,12 @@ describe('should test that breadrumb traits exists ', () => {
   });
 
   it('should get page about linkData', () => {
-    const bcPageData = BreadcrumbTraits.navBreadcrumb$GetState(
+    const bcPageData = NavBreadcrumbItemTraits.navBreadcrumbItem$GetState(
       payloadAbout,
       propsPage,
     );
 
-    const bcCardData = BreadcrumbTraits.navBreadcrumb$GetState(
+    const bcCardData = NavBreadcrumbItemTraits.navBreadcrumbItem$GetState(
       payloadAbout,
       propsCard,
     );
@@ -154,12 +150,12 @@ describe('should test that breadrumb traits exists ', () => {
   });
 
   it('should get card linkData', () => {
-    const bcPageData = BreadcrumbTraits.navBreadcrumb$GetState(
+    const bcPageData = NavBreadcrumbItemTraits.navBreadcrumbItem$GetState(
       payloadCardFlyingTech,
       propsPage,
     );
 
-    const bcCardData = BreadcrumbTraits.navBreadcrumb$GetState(
+    const bcCardData = NavBreadcrumbItemTraits.navBreadcrumbItem$GetState(
       payloadCardFlyingTech,
       propsCard,
     );
@@ -169,16 +165,16 @@ describe('should test that breadrumb traits exists ', () => {
   });
 
   it('should return the correct breadcrumb class', () => {
-    const isHiddenBC = BreadcrumbTraits.navBreadcrumb$getBreadcrumbLinkClass({
+    const isHiddenBC = NavBreadcrumbItemTraits.navBreadcrumbItem$getBreadcrumbLinkClass({
       isVisible: false,
       isActive: false,
     });
-    const isVisibleBC = BreadcrumbTraits.navBreadcrumb$getBreadcrumbLinkClass({
+    const isVisibleBC = NavBreadcrumbItemTraits.navBreadcrumbItem$getBreadcrumbLinkClass({
       isVisible: true,
       isActive: false,
     });
     const isVisibleAndActiveBC =
-      BreadcrumbTraits.navBreadcrumb$getBreadcrumbLinkClass({
+      NavBreadcrumbItemTraits.navBreadcrumbItem$getBreadcrumbLinkClass({
         isVisible: true,
         isActive: true,
       });

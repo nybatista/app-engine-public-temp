@@ -1,5 +1,5 @@
 import { ViewStream } from 'spyne';
-import { UIFooterViewTraits } from 'traits/ui-footer-view-traits.js';
+import { UIFooterViewTraits } from 'traits/ui/ui-footer-view-traits.js';
 
 export class UIFooterView extends ViewStream {
   constructor(props = {}) {

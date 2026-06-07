@@ -1,5 +1,4 @@
 import { SpyneTrait } from 'spyne';
-import { UIBreadcrumbView } from 'components/ui-elements/ui-breadcrumb-view.js';
 import { pick } from 'ramda';
 export class NavBreadcrumbItemTraits extends SpyneTrait {
   constructor(context) {

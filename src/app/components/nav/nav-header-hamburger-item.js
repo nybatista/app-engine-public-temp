@@ -1,8 +1,8 @@
 import { ViewStream } from 'spyne';
-import HamburgerTmpl from './templates/ui-hamburger.tmpl.html';
-import { NavHeaderHamburgerItemTraits } from 'traits/nav-header-hamburger-item-traits.js';
+import HamburgerTmpl from './templates/nav-header-hamburger-item.tmpl.html';
+import { NavHeaderHamburgerItemTraits } from 'traits/nav/nav-header-hamburger-item-traits.js';
 
-export class UIHeaderHamburgerView extends ViewStream {
+export class NavHeaderHamburgerItem extends ViewStream {
   constructor(props = {}) {
     props.id = 'menu_toggle';
     props.dataset = {

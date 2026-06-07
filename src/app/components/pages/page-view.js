@@ -1,5 +1,5 @@
 import { ViewStream, safeClone, SpyneAppProperties } from 'spyne';
-import { PageItemCoreTraits } from 'traits/page-item-core-traits.js';
+import { PageItemCoreTraits } from 'traits/page/page-item-core-traits.js';
 import PageTmpl from './templates/page.tmpl.html';
 
 export class PageView extends ViewStream {

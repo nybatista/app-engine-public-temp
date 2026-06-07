@@ -1,8 +1,8 @@
 import { ViewStream } from 'spyne';
-import { StageContainerTraits } from 'traits/stage-container-traits.js';
+import { StageContainerTraits } from 'traits/app/stage-container-traits.js';
 
 
-export class StageView extends ViewStream {
+export class StageContainer extends ViewStream {
   constructor(props = {}) {
     props.id = 'stage-view';
     props.traits = [StageContainerTraits];

@@ -1,6 +1,6 @@
 import { ViewStream } from 'spyne';
 import MenuDrawerTmpl from './templates/ui-menu-drawer.tmpl.html';
-import { UIMenuDrawerViewTraits } from 'traits/ui-menu-drawer-view-traits.js';
+import { UIMenuDrawerViewTraits } from 'traits/ui/ui-menu-drawer-view-traits.js';
 
 export class UIMenuDrawerView extends ViewStream {
   constructor(props = {}) {

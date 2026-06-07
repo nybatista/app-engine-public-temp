@@ -1,8 +1,8 @@
 import { ViewStream } from 'spyne';
-import UIHeaderNavTmpl from './templates/ui-header-nav-view.tmpl.html';
-import {NavPrimaryViewTraits} from 'traits/nav-primary-view-traits.js';
+import UIHeaderNavTmpl from './templates/nav-primary-view.tmpl.html';
+import {NavPrimaryViewTraits} from 'traits/nav/nav-primary-view-traits.js';
 
-export class UIHeaderNavView extends ViewStream {
+export class NavPrimaryView extends ViewStream {
   constructor(props = {}) {
     props.class = 'site-nav';
     props.tagName = 'nav';

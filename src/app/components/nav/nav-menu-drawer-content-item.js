@@ -1,7 +1,7 @@
 import { ViewStream } from 'spyne';
-import MenuDrawerNavTmpl from 'components/ui-elements/templates/ui-menu-drawer-nav.tmpl.html';
+import MenuDrawerNavTmpl from 'components/nav/templates/nav-menu-drawer-content.tmpl.html';
 
-export class UIMenuDrawerNavView extends ViewStream {
+export class NavMenuDrawerContentItem extends ViewStream {
   constructor(props = {}) {
     props.id = 'menu-drawer-content';
     props.tagName = 'nav';

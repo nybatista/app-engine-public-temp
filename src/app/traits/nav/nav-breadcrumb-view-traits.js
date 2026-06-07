@@ -1,6 +1,5 @@
 import { SpyneTrait } from 'spyne';
-import { UIBreadcrumbView } from 'components/ui-elements/ui-breadcrumb-view.js';
-import { pick } from 'ramda';
+import { NavBreadcrumbItem } from 'components/nav/nav-breadcrumb-item.js';
 export class NavBreadcrumbViewTraits extends SpyneTrait {
   constructor(context) {
     let traitPrefix = 'navBreadcrumb$';
@@ -61,7 +60,7 @@ export class NavBreadcrumbViewTraits extends SpyneTrait {
     const addBreadcrumbs = (bcObj) => {
       const { bcProps, navLevel } = bcObj;
       this.appendView(
-        new UIBreadcrumbView({
+        new NavBreadcrumbItem({
           bcProps,
           navLevel,
           navLinks,

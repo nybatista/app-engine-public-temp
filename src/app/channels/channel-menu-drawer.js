@@ -1,6 +1,6 @@
 import { path } from 'ramda';
 import { Channel, ChannelPayloadFilter } from 'spyne';
-import { ChannelMenuDrawerTraits } from 'traits/channel-menu-drawer-traits.js';
+import { ChannelMenuDrawerTraits } from 'traits/channel/channel-menu-drawer-traits.js';
 
 export class ChannelMenuDrawer extends Channel {
   constructor(name, props = {}) {

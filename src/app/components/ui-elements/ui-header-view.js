@@ -1,5 +1,5 @@
 import { ViewStream } from 'spyne';
-import { UIHeaderViewTraits } from 'traits/ui-header-view-traits.js';
+import { UIHeaderViewTraits } from 'traits/ui/ui-header-view-traits.js';
 import UIHeaderTmpl from './templates/ui-header-view.tmpl.html';
 
 export class UIHeaderView extends ViewStream {

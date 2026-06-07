@@ -3,7 +3,7 @@ import { UIHeaderView } from 'components/ui-elements/ui-header-view.js';
 import {
   UIMenuDrawerView
 } from 'components/ui-elements/ui-menu-drawer-view.js';
-import { StageView } from 'components/stage-view.js';
+import { StageContainer } from 'components/stage-container.js';
 import { UIFooterView } from 'components/ui-elements/ui-footer-view.js';
 import {
   LocalStorageNullView
@@ -36,7 +36,7 @@ export class AppContainerTraits extends SpyneTrait {
   static app$OnAppViewRendered(){
     this.appendView(new UIHeaderView());
     this.appendView(new UIMenuDrawerView());
-    this.appendView(new StageView());
+    this.appendView(new StageContainer());
     this.appendView(new UIFooterView());
     new LocalStorageNullView().appendToNull();
   }

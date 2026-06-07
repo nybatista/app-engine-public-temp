@@ -1,5 +1,5 @@
 import { ViewStream } from 'spyne';
-import { FormContactUsTraits } from 'traits/form-contact-us-traits.js';
+import { FormContactUsTraits } from 'traits/form/form-contact-us-traits.js';
 
 export class FormContactUsView extends ViewStream {
   constructor(props = {}) {

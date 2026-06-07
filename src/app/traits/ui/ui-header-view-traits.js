@@ -1,6 +1,6 @@
 import { SpyneTrait } from 'spyne';
-import { UIHeaderNavView } from 'components/ui-elements/ui-header-nav-view.js';
-import { UIHeaderHamburgerView} from 'components/ui-elements/ui-header-hamburger-view.js';
+import { NavPrimaryView } from 'components/nav/nav-primary-view.js';
+import { NavHeaderHamburgerItem } from 'components/nav/nav-header-hamburger-item.js';
 
 export class UIHeaderViewTraits extends SpyneTrait {
   constructor(context) {
@@ -11,7 +11,7 @@ export class UIHeaderViewTraits extends SpyneTrait {
 
   static uiHeader$AddNavLinks(navLinks = []) {
     const data = navLinks.filter((o) => o.navLevel === 1);
-    this.appendView(new UIHeaderNavView({ data }), '.header-content');
+    this.appendView(new NavPrimaryView({ data }), '.header-content');
   }
 
   static uiHeader$OnAppDataEvent(logoTxt = '') {
@@ -26,7 +26,7 @@ export class UIHeaderViewTraits extends SpyneTrait {
   }
 
   static uiHeader$UIHeaderViewOnRendered(e) {
-    this.appendView(new UIHeaderHamburgerView());
+    this.appendView(new NavHeaderHamburgerItem());
   }
 
 
