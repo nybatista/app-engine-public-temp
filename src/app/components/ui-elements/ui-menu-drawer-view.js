@@ -20,9 +20,7 @@ export class UIMenuDrawerView extends ViewStream {
   addActionListeners() {
     return [
       ['CHANNEL_MENU_DRAWER_INIT_EVENT', 'menuDrawer$addContent'],
-
       ['CHANNEL_ROUTE_CHANGE_EVENT', 'menuDrawer$SetActiveLink'],
-
       ['CHANNEL_MENU_DRAWER__.*_EVENT', 'menuDrawer$onShowMenuDrawerEvent'],
     ];
   }

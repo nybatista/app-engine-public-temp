@@ -31,10 +31,4 @@ export class NavMenuDrawerTraits extends SpyneTrait {
     this.props.el$('a.nav').setActiveItem('selected', activeSel);
   }
 
-  static menuDrawer$UIHeaderHamburgerViewOnShowMenuDrawerEvent(e) {
-    const { action } = e;
-    const isActiveBurger = action === 'CHANNEL_MENU_DRAWER__SHOW_EVENT';
-    this.props.el$.toggleClass('open', isActiveBurger);
-
-  }
 }

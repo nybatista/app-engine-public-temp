@@ -1,6 +1,6 @@
 import { ViewStream } from 'spyne';
 import HamburgerTmpl from './templates/ui-hamburger.tmpl.html';
-import { NavMenuDrawerTraits } from 'traits/nav-menu-drawer-traits.js';
+import { NavHamburgerTraits } from 'traits/nav-hamburger-traits.js';
 
 export class UIHeaderHamburgerView extends ViewStream {
   constructor(props = {}) {
@@ -10,17 +10,14 @@ export class UIHeaderHamburgerView extends ViewStream {
       isHamburger: 'true',
     };
     props.channels = ['CHANNEL_MENU_DRAWER'];
-    props.traits = [NavMenuDrawerTraits];
+    props.traits = [NavHamburgerTraits];
     props.template = HamburgerTmpl;
     super(props);
   }
 
   addActionListeners() {
     return [
-      [
-        'CHANNEL_MENU_DRAWER_.*_EVENT',
-        'menuDrawer$UIHeaderHamburgerViewOnShowMenuDrawerEvent',
-      ],
+      ['CHANNEL_MENU_DRAWER_.*_EVENT', 'navHamburger$OnShowMenuDrawerEvent'],
     ];
   }
 
