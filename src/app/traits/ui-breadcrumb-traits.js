@@ -1,7 +1,7 @@
 import { SpyneTrait } from 'spyne';
 import { UIBreadcrumbView } from 'components/ui-elements/ui-breadcrumb-view.js';
 import { pick } from 'ramda';
-export class NavBreadcrumbTraits extends SpyneTrait {
+export class UIBreadcrumbTraits extends SpyneTrait {
   constructor(context) {
     let traitPrefix = 'breadcrumb$';
 
@@ -205,4 +205,19 @@ export class NavBreadcrumbTraits extends SpyneTrait {
       this.props.link$.el.innerText = '';
     }
   }
+
+  breadcrumb$UIBreadcrumbViewOnRendered(){
+    this.props.link$ = this.props.el$('a');
+    this.props.linkData = this.props.link$.el.dataset;
+
+    if (this.props.initPayload) {
+      this.breadcrumb$UpdateLink({ payload: this.props.initPayload });
+    }
+  }
+
+  breadcrumb$OnAppInitEvent(e){
+    const payload = e.payload.initData;
+    this.breadcrumb$initBreadcrumbs({ payload });
+  }
+
 }

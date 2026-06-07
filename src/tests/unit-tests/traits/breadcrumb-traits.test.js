@@ -7,7 +7,7 @@ import {
   payloadDesignButtonPrimary,
   payloadCardFlyingTech,
 } from '../mocks/route-mocks.js';
-import { BreadcrumbTraits } from '/src/app/traits/nav-breadcrumb-traits.js';
+import { BreadcrumbTraits } from '/src/app/traits/ui-breadcrumb-traits.js';
 import { add } from 'ramda';
 
 const propsPage = {

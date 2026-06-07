@@ -14,14 +14,7 @@ export class UIHeaderView extends ViewStream {
   }
 
   addActionListeners() {
-    return [['CHANNEL_APP_INIT_EVENT', 'onAppInitEvent']];
-  }
-
-  onAppInitEvent(e) {
-    const { initData } = e.payload;
-    const { navLinks, header } = initData;
-    this.nav$AddNavLinks(navLinks);
-    this.nav$OnAppDataEvent(header);
+    return [['CHANNEL_APP_INIT_EVENT', 'nav$OnAppInitEvent']];
   }
 
   broadcastEvents() {

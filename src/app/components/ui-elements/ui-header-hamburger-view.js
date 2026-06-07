@@ -1,5 +1,6 @@
 import { ViewStream } from 'spyne';
 import HamburgerTmpl from './templates/ui-hamburger.tmpl.html';
+import { NavMenuDrawerTraits } from 'traits/nav-menu-drawer-traits.js';
 
 export class UIHeaderHamburgerView extends ViewStream {
   constructor(props = {}) {
@@ -8,27 +9,24 @@ export class UIHeaderHamburgerView extends ViewStream {
       eventType: 'menuDrawer',
       isHamburger: 'true',
     };
+    props.channels = ['CHANNEL_MENU_DRAWER'];
+    props.traits = [NavMenuDrawerTraits];
     props.template = HamburgerTmpl;
     super(props);
   }
 
   addActionListeners() {
-    // return nexted array(s)
-    return [['CHANNEL_MENU_DRAWER_.*_EVENT', 'onShowMenuDrawerEvent']];
-  }
-
-  onShowMenuDrawerEvent(e) {
-    const { action } = e;
-    const isActiveBurger = action === 'CHANNEL_MENU_DRAWER__SHOW_EVENT';
-    this.props.el$.toggleClass('open', isActiveBurger);
+    return [
+      [
+        'CHANNEL_MENU_DRAWER_.*_EVENT',
+        'menuDrawer$UIHeaderHamburgerViewOnShowMenuDrawerEvent',
+      ],
+    ];
   }
 
   broadcastEvents() {
-    // return nexted array(s)
     return [['#menu_toggle', 'click']];
   }
 
-  onRendered() {
-    this.addChannel('CHANNEL_MENU_DRAWER');
-  }
+  onRendered() {}
 }

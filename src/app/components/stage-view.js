@@ -1,5 +1,5 @@
 import { ViewStream } from 'spyne';
-import { NavBreadcrumbTraits } from 'traits/nav-breadcrumb-traits.js';
+import { UIBreadcrumbTraits } from 'traits/ui-breadcrumb-traits.js';
 import { UIBreadcrumbComponent } from 'components/ui-elements/ui-breadcrumb-component.js';
 import { Page404View } from 'components/pages/page-404-view.js';
 import { PageView } from 'components/pages/page-view.js';
@@ -7,7 +7,7 @@ import { PageView } from 'components/pages/page-view.js';
 export class StageView extends ViewStream {
   constructor(props = {}) {
     props.id = 'stage-view';
-    props.traits = [NavBreadcrumbTraits];
+    props.traits = [UIBreadcrumbTraits];
     props.channels = ['CHANNEL_APP', 'CHANNEL_ROUTE'];
     props.template = `<div class="slot slot-ui"></div>
                       <div class="slot slot-page  page-container "></div>`;
