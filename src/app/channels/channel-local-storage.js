@@ -10,20 +10,9 @@ export class ChannelLocalStorage extends Channel {
   }
 
   onRegistered() {
-    const settinsPayloadFilter = new ChannelPayloadFilter({
-      action: 'CHANNEL_APP_SETTING_EVENT',
-    });
-
-    this.getChannel('CHANNEL_APP', settinsPayloadFilter).subscribe(
-      this.onStatusSettingsEvent.bind(this),
-    );
+    this.localStorage$ChannelOnRegistered();
   }
 
-  onStatusSettingsEvent(e) {
-    const { settingsType, settingsValue } = e.payload;
-
-    this.localStorage$SetItem(settingsType, settingsValue);
-  }
 
   addRegisteredActions() {
     return [
@@ -35,9 +24,9 @@ export class ChannelLocalStorage extends Channel {
     ];
   }
 
-  onViewStreamInfo(e) {
-    const { payload, action } = e;
 
-    this.sendChannelPayload(action, payload);
+
+  onViewStreamInfo(e) {
+    this.localStorage$ChannelOnViewStreamInfo(e);
   }
 }

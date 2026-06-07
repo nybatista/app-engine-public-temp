@@ -1,5 +1,4 @@
 import { ViewStream } from 'spyne';
-import { UIBreadcrumbTraits } from 'traits/ui-breadcrumb-traits.js';
 import { AppStageViewTraits } from 'traits/app-stage-view-traits.js';
 
 

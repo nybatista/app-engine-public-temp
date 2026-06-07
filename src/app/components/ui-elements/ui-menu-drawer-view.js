@@ -28,7 +28,6 @@ export class UIMenuDrawerView extends ViewStream {
   }
 
   broadcastEvents() {
-    // return nested array(s)
     return [];
   }
 

@@ -10,12 +10,10 @@ export class Page404View extends ViewStream {
   }
 
   addActionListeners() {
-    // return nexted array(s)
     return [['CHANNEL_ROUTE_CHANGE_EVENT', 'disposeViewStream']];
   }
 
   broadcastEvents() {
-    // return nexted array(s)
     return [];
   }
 

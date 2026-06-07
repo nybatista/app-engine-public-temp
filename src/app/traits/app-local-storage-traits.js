@@ -1,4 +1,4 @@
-import { SpyneTrait, SpyneAppProperties } from 'spyne';
+import { SpyneTrait, SpyneAppProperties, ChannelPayloadFilter } from 'spyne';
 
 export class AppLocalStorageTraits extends SpyneTrait {
   constructor(context) {
@@ -96,4 +96,30 @@ export class AppLocalStorageTraits extends SpyneTrait {
 
   // --- channel local storage methods
   static localStorage$onChannelUpdateKeyRequest(e) {}
+
+  static localStorage$ChannelOnRegistered(e){
+    const settinsPayloadFilter = new ChannelPayloadFilter({
+      action: 'CHANNEL_APP_SETTING_EVENT',
+    });
+
+    this.getChannel('CHANNEL_APP', settinsPayloadFilter).subscribe(
+      this.localStorage$ChannelOnStatusSettingsEvent.bind(this),
+    );
+  }
+
+  static localStorage$ChannelOnStatusSettingsEvent(e){
+    const { settingsType, settingsValue } = e.payload;
+
+    this.localStorage$SetItem(settingsType, settingsValue);
+
+  }
+
+  static localStorage$ChannelOnViewStreamInfo(e){
+    const { payload, action } = e;
+    this.sendChannelPayload(action, payload);
+  }
+
+
+
+
 }
