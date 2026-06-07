@@ -1,7 +1,6 @@
 import { ViewStream } from 'spyne';
 import { NavigationTraits } from 'traits/navigation-traits.js';
 import UIHeaderTmpl from './templates/ui-header-view.tmpl.html';
-import { UIHeaderHamburgerView } from 'components/ui-elements/ui-header-hamburger-view.js';
 
 export class UIHeaderView extends ViewStream {
   constructor(props = {}) {
@@ -14,7 +13,7 @@ export class UIHeaderView extends ViewStream {
   }
 
   addActionListeners() {
-    return [['CHANNEL_APP_INIT_EVENT', 'nav$OnAppInitEvent']];
+    return [['CHANNEL_APP_INIT_EVENT', 'nav$UIHeaderViewOnAppInitEvent']];
   }
 
   broadcastEvents() {
@@ -22,6 +21,6 @@ export class UIHeaderView extends ViewStream {
   }
 
   onRendered() {
-    this.appendView(new UIHeaderHamburgerView());
+    this.nav$UIHeaderViewOnRendered();
   }
 }

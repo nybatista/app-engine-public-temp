@@ -25,10 +25,6 @@ export class AppView extends ViewStream {
   }
 
   onRendered() {
-    this.appendView(new UIHeaderView());
-    this.appendView(new UIMenuDrawerView());
-    this.appendView(new StageView());
-    this.appendView(new UIFooterView());
-    new LocalStorageNullView().appendToNull();
+    this.appSetup$OnAppViewRendered();
   }
 }
