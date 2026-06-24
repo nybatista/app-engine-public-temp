@@ -1,5 +1,5 @@
 import { SpyneTrait, ViewStream } from 'spyne';
-import { NavMenuDrawerContentItem } from 'components/nav/nav-menu-drawer-content-item.js';
+import { NavMenuDrawerView } from 'components/nav/nav-menu-drawer-view.js';
 
 export class UIMenuDrawerViewTraits extends SpyneTrait {
   constructor(context) {
@@ -9,7 +9,7 @@ export class UIMenuDrawerViewTraits extends SpyneTrait {
 
   static uiMenuDrawer$addContent(e) {
     const data = e.payload.initData.navLinks;
-    this.appendView(new NavMenuDrawerContentItem({ data }));
+    this.appendView(new NavMenuDrawerView({ data }));
     this.uiMenuDrawer$SetActiveLink(e);
   }
 

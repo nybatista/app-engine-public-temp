@@ -8,11 +8,7 @@ export class UIMenuDrawerView extends ViewStream {
     props.class = 'menu-drawer';
     props.traits = [UIMenuDrawerViewTraits];
 
-    props.channels = [
-      'CHANNEL_ROUTE',
-      'CHANNEL_MENU_DRAWER',
-      'CHANNEL_APP',
-    ];
+    props.channels = ['CHANNEL_MENU_DRAWER'];
     props.template = MenuDrawerTmpl;
     super(props);
   }
@@ -20,7 +16,6 @@ export class UIMenuDrawerView extends ViewStream {
   addActionListeners() {
     return [
       ['CHANNEL_MENU_DRAWER_INIT_EVENT', 'uiMenuDrawer$addContent'],
-      ['CHANNEL_ROUTE_CHANGE_EVENT', 'uiMenuDrawer$SetActiveLink'],
       ['CHANNEL_MENU_DRAWER__.*_EVENT', 'uiMenuDrawer$onShowMenuDrawerEvent'],
     ];
   }
