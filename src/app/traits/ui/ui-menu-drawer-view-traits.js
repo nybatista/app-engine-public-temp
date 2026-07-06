@@ -1,4 +1,4 @@
-import { SpyneTrait, ViewStream } from 'spyne';
+import { SpyneTrait } from 'spyne';
 import { NavMenuDrawerView } from 'components/nav/nav-menu-drawer-view.js';
 
 export class UIMenuDrawerViewTraits extends SpyneTrait {
@@ -30,5 +30,4 @@ export class UIMenuDrawerViewTraits extends SpyneTrait {
     const activeSel = `a.nav[data-page-id='${pageId}'][data-topic-id='${topicId}']`;
     this.props.el$('a.nav').setActiveItem('selected', activeSel);
   }
-
 }

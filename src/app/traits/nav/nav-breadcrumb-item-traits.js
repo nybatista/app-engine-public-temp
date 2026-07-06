@@ -7,7 +7,6 @@ export class NavBreadcrumbItemTraits extends SpyneTrait {
     super(context, traitPrefix);
   }
 
-
   static navBreadcrumbItem$GetRouteState(payload, props = this.props) {
     const { bcProps, navLevel, navLinks } = props;
     const { paths = [], pathInnermost } = payload;
@@ -70,7 +69,10 @@ export class NavBreadcrumbItemTraits extends SpyneTrait {
     return { isVisible, isActive, bcProps, bcValues, navLevel, navLink };
   }
 
-  static navBreadcrumbItem$FindNavLink(filterData, navLinks = this.props.navLinks) {
+  static navBreadcrumbItem$FindNavLink(
+    filterData,
+    navLinks = this.props.navLinks,
+  ) {
     const { bcProps, bcValues, navLevel } = filterData;
     return navLinks.find((link) => {
       if (link.navLevel !== navLevel) return false;
@@ -141,7 +143,7 @@ export class NavBreadcrumbItemTraits extends SpyneTrait {
     }
   }
 
-  navBreadcrumbItem$UIBreadcrumbOnRendered(){
+  navBreadcrumbItem$UIBreadcrumbOnRendered() {
     this.props.link$ = this.props.el$('a');
     this.props.linkData = this.props.link$.el.dataset;
 
@@ -149,7 +151,4 @@ export class NavBreadcrumbItemTraits extends SpyneTrait {
       this.navBreadcrumbItem$UpdateLink({ payload: this.props.initPayload });
     }
   }
-
-
-
 }

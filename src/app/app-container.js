@@ -14,7 +14,10 @@ export class AppContainer extends ViewStream {
 
   addActionListeners() {
     return [
-      ['CHANNEL_LOCAL_STORAGE_APP_SETTINGS_INITIALIZED_EVENT',  'app$OnLocalStorageEvent'],
+      [
+        'CHANNEL_LOCAL_STORAGE_APP_SETTINGS_INITIALIZED_EVENT',
+        'app$OnLocalStorageEvent',
+      ],
       ['CHANNEL_APP_SETTING_EVENT', 'app$OnSettingsEvent'],
     ];
   }

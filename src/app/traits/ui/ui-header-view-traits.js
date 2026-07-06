@@ -25,10 +25,7 @@ export class UIHeaderViewTraits extends SpyneTrait {
     this.uiHeader$OnAppDataEvent(header);
   }
 
-  static uiHeader$UIHeaderViewOnRendered(e) {
+  static uiHeader$UIHeaderViewOnRendered() {
     this.appendView(new NavHeaderHamburgerItem());
   }
-
-
-
 }

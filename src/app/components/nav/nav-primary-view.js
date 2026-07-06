@@ -1,6 +1,6 @@
 import { ViewStream } from 'spyne';
 import UIHeaderNavTmpl from './templates/nav-primary-view.tmpl.html';
-import {NavPrimaryViewTraits} from 'traits/nav/nav-primary-view-traits.js';
+import { NavPrimaryViewTraits } from 'traits/nav/nav-primary-view-traits.js';
 
 export class NavPrimaryView extends ViewStream {
   constructor(props = {}) {
@@ -9,11 +9,7 @@ export class NavPrimaryView extends ViewStream {
     props['aria-label'] = 'Main Navigation';
     props.template = UIHeaderNavTmpl;
     props.traits = [NavPrimaryViewTraits];
-    props.channels = [
-      'CHANNEL_ROUTE',
-      'CHANNEL_APP',
-      'CHANNEL_LOCAL_STORAGE',
-    ];
+    props.channels = ['CHANNEL_ROUTE', 'CHANNEL_APP', 'CHANNEL_LOCAL_STORAGE'];
     super(props);
   }
 
@@ -32,7 +28,6 @@ export class NavPrimaryView extends ViewStream {
       ['CHANNEL_APP_SETTING_EVENT', 'nav$UIHeaderNavViewOnSettingsEvent'],
     ];
   }
-
 
   broadcastEvents() {
     // return nested array(s)

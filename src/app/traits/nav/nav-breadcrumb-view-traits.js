@@ -7,7 +7,6 @@ export class NavBreadcrumbViewTraits extends SpyneTrait {
     super(context, traitPrefix);
   }
 
-
   static navBreadcrumb$OnAppInitEvent(e) {
     const payload = e.payload.initData;
     this.navBreadcrumb$initBreadcrumbs({ payload });
@@ -73,6 +72,4 @@ export class NavBreadcrumbViewTraits extends SpyneTrait {
 
     breacrumbObjs.forEach(addBreadcrumbs);
   }
-
-
 }

@@ -1,4 +1,4 @@
-import { SpyneTrait, ViewStream } from 'spyne';
+import { SpyneTrait } from 'spyne';
 
 export class NavMenuDrawerViewTraits extends SpyneTrait {
   constructor(context) {

@@ -7,7 +7,6 @@ export class NavPrimaryViewTraits extends SpyneTrait {
     super(context, traitPrefix);
   }
 
-
   static nav$UIHeaderNavViewUpdateSettingsBtn(type, value) {
     this.props.el$(`[data-settings-type="${type}"]`).el.dataset.settingsValue =
       value;

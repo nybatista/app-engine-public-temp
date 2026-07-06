@@ -17,7 +17,10 @@ export class NavHeaderHamburgerItem extends ViewStream {
 
   addActionListeners() {
     return [
-      ['CHANNEL_MENU_DRAWER_.*_EVENT', 'navHeaderHamburgerItem$OnShowMenuDrawerEvent'],
+      [
+        'CHANNEL_MENU_DRAWER_.*_EVENT',
+        'navHeaderHamburgerItem$OnShowMenuDrawerEvent',
+      ],
     ];
   }
 

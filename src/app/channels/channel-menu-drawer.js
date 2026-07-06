@@ -1,5 +1,4 @@
-import { path } from 'ramda';
-import { Channel, ChannelPayloadFilter } from 'spyne';
+import { Channel } from 'spyne';
 import { ChannelMenuDrawerTraits } from 'traits/channel/channel-menu-drawer-traits.js';
 
 export class ChannelMenuDrawer extends Channel {
@@ -14,7 +13,6 @@ export class ChannelMenuDrawer extends Channel {
   onRegistered() {
     this.channelMenuDrawer$OnRegistered();
   }
-
 
   addRegisteredActions() {
     return [

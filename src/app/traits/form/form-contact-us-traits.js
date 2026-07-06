@@ -50,7 +50,7 @@ export class FormContactUsTraits extends SpyneTrait {
     );
   }
 
-  contactUs$OnSuccess(response) {}
+  contactUs$OnSuccess() {}
 
   static contactUs$HelloWorld() {
     return 'Hello World';

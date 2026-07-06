@@ -6,7 +6,7 @@ export class NavMenuDrawerView extends ViewStream {
   constructor(props = {}) {
     props.id = 'menu-drawer-content';
     props.tagName = 'nav';
-    props.channels = ["CHANNEL_ROUTE"];
+    props.channels = ['CHANNEL_ROUTE'];
     props.traits = [NavMenuDrawerViewTraits];
     props.template = MenuDrawerNavTmpl;
 
@@ -18,9 +18,7 @@ export class NavMenuDrawerView extends ViewStream {
   }
 
   broadcastEvents() {
-    return [
-      ['a', 'click']
-    ];
+    return [['a', 'click']];
   }
 
   onRendered() {}

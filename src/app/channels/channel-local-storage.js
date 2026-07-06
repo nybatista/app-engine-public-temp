@@ -1,4 +1,4 @@
-import { Channel, ChannelPayloadFilter } from 'spyne';
+import { Channel } from 'spyne';
 import { AppLocalStorageTraits } from 'traits/app/app-local-storage-traits.js';
 
 export class ChannelLocalStorage extends Channel {
@@ -13,7 +13,6 @@ export class ChannelLocalStorage extends Channel {
     this.localStorage$ChannelOnRegistered();
   }
 
-
   addRegisteredActions() {
     return [
       'CHANNEL_LOCAL_STORAGE_APP_SETTINGS_INITIALIZED_EVENT',
@@ -23,8 +22,6 @@ export class ChannelLocalStorage extends Channel {
       ],
     ];
   }
-
-
 
   onViewStreamInfo(e) {
     this.localStorage$ChannelOnViewStreamInfo(e);

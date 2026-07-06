@@ -1,5 +1,5 @@
 import { path } from 'ramda';
-import { SpyneTrait, Channel, ChannelPayloadFilter } from 'spyne';
+import { SpyneTrait, ChannelPayloadFilter } from 'spyne';
 
 export class ChannelMenuDrawerTraits extends SpyneTrait {
   constructor(context) {
@@ -68,9 +68,7 @@ export class ChannelMenuDrawerTraits extends SpyneTrait {
     this.sendChannelPayload(action, { action });
   }
 
-  static channelMenuDrawer$OnWindowEvent(e) {
+  static channelMenuDrawer$OnWindowEvent() {
     this.channelMenuDrawer$SendMenuDrawerEvent(false);
   }
-
-
 }

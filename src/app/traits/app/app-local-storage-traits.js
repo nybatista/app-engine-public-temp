@@ -95,9 +95,9 @@ export class AppLocalStorageTraits extends SpyneTrait {
   }
 
   // --- channel local storage methods
-  static localStorage$onChannelUpdateKeyRequest(e) {}
+  static localStorage$onChannelUpdateKeyRequest() {}
 
-  static localStorage$ChannelOnRegistered(e){
+  static localStorage$ChannelOnRegistered() {
     const settinsPayloadFilter = new ChannelPayloadFilter({
       action: 'CHANNEL_APP_SETTING_EVENT',
     });
@@ -107,19 +107,14 @@ export class AppLocalStorageTraits extends SpyneTrait {
     );
   }
 
-  static localStorage$ChannelOnStatusSettingsEvent(e){
+  static localStorage$ChannelOnStatusSettingsEvent(e) {
     const { settingsType, settingsValue } = e.payload;
 
     this.localStorage$SetItem(settingsType, settingsValue);
-
   }
 
-  static localStorage$ChannelOnViewStreamInfo(e){
+  static localStorage$ChannelOnViewStreamInfo(e) {
     const { payload, action } = e;
     this.sendChannelPayload(action, payload);
   }
-
-
-
-
 }

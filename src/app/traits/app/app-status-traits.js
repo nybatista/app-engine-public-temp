@@ -135,7 +135,7 @@ export class AppStatusTraits extends SpyneTrait {
       reduce(getDataReducer, data),
       toPairs,
       pick(keys),
-      reject(([_, v]) => isNil(v) || v === ''),
+      reject(([, v]) => isNil(v) || v === ''),
     )(routeData);
 
     /**
