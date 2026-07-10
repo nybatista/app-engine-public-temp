@@ -15,7 +15,6 @@ const __dirname = path.dirname(__filename);
 // ── Constants ────────────────────────────────────────────────────────────────
 const ASSETS_DIR = 'assets'; // prod asset root; empty string in dev
 const PUBLIC_PATH = '/';
-const DEV_PORT = 8056; // fixed (not 'auto') so agents/tests can rely on the URL
 
 /**
  * Webpack config factory.
@@ -74,7 +73,7 @@ export default (env = { mode: 'development' }) => {
         directory: path.resolve(__dirname, 'src'),
       },
       historyApiFallback: true,
-      port: DEV_PORT,
+      port: 'auto',
     },
 
     plugins: getWebpackPlugins(ctx),
@@ -201,7 +200,8 @@ function getWebpackPlugins({
 }) {
   const definePlugin = new webpack.DefinePlugin({
     IMG_PATH: JSON.stringify(imgPath),
-    NODE_ENV: JSON.stringify(isProduction ? 'production' : 'development'),
+    NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+    SPYNE_APP_DIR: JSON.stringify(process.cwd()),
   });
 
   const htmlPlugin = new HtmlWebpackPlugin({

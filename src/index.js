@@ -35,7 +35,15 @@ const config = {
       mediaQueries: {
         showMenuDrawer: `(min-width: 1024px)`,
       },
-      events: ['click', 'mouseover', 'message', 'keyup'],
+      events: [
+        'click',
+        'mouseover',
+        'mouseenter',
+        'message',
+        'keyup',
+        'keydown',
+      ],
+      customEvents: [{ name: 'spyne_cms_item_connected', buffer: 400 }],
 
       listenForScroll: true,
       listenForOrientation: true,
