@@ -68,9 +68,9 @@
     display: flex;
     gap: 1rem;
 
-    a {
+    a.nav {
       text-decoration: none;
-      color: var(--link);
+      color: var(--text-link);
       text-transform: uppercase;
       font-weight: 500;
       font-size: 0.875rem;
