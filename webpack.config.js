@@ -224,8 +224,8 @@ function getWebpackPlugins({
     // issues show as warnings in the build output, they don't break `npm start`.
     plugins.push(
       new CmsAdapterWebpack(),
-      new ESLintPlugin({ failOnError: false }),
     );
+    // new ESLintPlugin({ failOnError: false }), REMOVING FOR NOW TO DEFER CONFIG FORMATTING
   }
 
   return plugins;
