@@ -1,75 +1,84 @@
 import { SpyneTrait } from 'spyne';
-import { NavBreadcrumbItem } from 'components/nav/nav-breadcrumb-item.js';
+
 export class NavBreadcrumbViewTraits extends SpyneTrait {
   constructor(context) {
-    let traitPrefix = 'navBreadcrumb$';
-
-    super(context, traitPrefix);
+    super(context, 'navBreadcrumbView$');
   }
 
-  static navBreadcrumb$OnAppInitEvent(e) {
-    const payload = e.payload.initData;
-    this.navBreadcrumb$initBreadcrumbs({ payload });
+  /**
+   * Pure derivation: everything this crumb needs to render, computed from
+   * the route payload plus this view's own coordinates (bcProps, navLevel).
+   *
+   *  isVisible  — route's active paths include any of this crumb's keys (and not home)
+   *  isActive   — deeper path levels exist beyond this crumb (it links "up")
+   *  isSelected — this crumb owns pathInnermost: the terminal crumb (aria-current)
+   */
+  static navBreadcrumbView$DeriveState(payload, props = this.props) {
+    const { bcProps, navLevel, navLinks } = props;
+    const { paths = [], pathInnermost, routeData = {} } = payload;
+
+    const isHome = routeData.pageId === 'home';
+    const onCurrentPath = bcProps.some((p) => paths.includes(p));
+
+    const isVisible = !isHome && onCurrentPath;
+    const isSelected = isVisible && bcProps.includes(pathInnermost);
+    const isActive = isVisible && paths.length > navLevel;
+
+    if (!isVisible) return { isVisible, isActive, isSelected };
+
+    const navLink = navLinks.find(
+      (link) =>
+        link.navLevel === navLevel &&
+        bcProps.every((p) => link[p] === routeData[p]),
+    );
+
+    return { isVisible, isActive, isSelected, navLink };
   }
 
-  static navBreadcrumb$getBreadcrumbObjs(navLinks) {
-    const OMIT_KEYS = new Set(['title', 'href', 'navLevel']);
-    const encountered = new Set(); // track which properties we've already assigned
-    const bcMap = new Map(); // maps navLevel -> { navLevel, bcProps: [] }
+  static navBreadcrumbView$UpdateLink(e) {
+    const { payload } = e;
+    const { isVisible, isActive, isSelected, navLink } =
+      this.navBreadcrumbView$DeriveState(payload);
 
-    // Sort by navLevel ascending
-    const sortedLinks = [...navLinks].sort((a, b) => a.navLevel - b.navLevel);
+    this.props.el$.setClass(
+      [
+        'breadcrumb-item',
+        !isVisible && 'breadcrumb-item--hidden',
+        isActive ? 'breadcrumb-item--active' : 'breadcrumb-item--inactive',
+      ]
+        .filter(Boolean)
+        .join(' '),
+    );
 
-    for (const link of sortedLinks) {
-      const { navLevel } = link;
+    // aria-current marks the terminal crumb only; hidden/terminal leave the tab order
+    if (isSelected) {
+      this.props.el.setAttribute('aria-current', 'page');
+    } else {
+      this.props.el.removeAttribute('aria-current');
+    }
+    this.props.el.tabIndex = isSelected || !isVisible ? -1 : 0;
 
-      // If we haven't seen this navLevel yet, create an entry
-      if (!bcMap.has(navLevel)) {
-        bcMap.set(navLevel, { navLevel, bcProps: [] });
-      }
-
-      // Check each property in the link object
-      for (const [key, value] of Object.entries(link)) {
-        // Skip if it's an omitted key or already encountered or empty string
-        if (
-          OMIT_KEYS.has(key) ||
-          encountered.has(key) ||
-          key === 'undefined' ||
-          value === ''
-        ) {
-          continue;
-        }
-
-        // Otherwise, mark this key as encountered
-        encountered.add(key);
-        // Add it to the bcProps array for this navLevel
-        bcMap.get(navLevel).bcProps.push(key);
-      }
+    if (!isVisible || navLink === undefined) {
+      this.props.link$.el.innerText = '';
+      return;
     }
 
-    // Convert the map to an array sorted by navLevel
-    return Array.from(bcMap.values()).sort((a, b) => a.navLevel - b.navLevel);
+    this.props.link$.el.innerText = navLink.title;
+    this.props.link$.el.href = navLink.href;
+
+    // Write this link's route coordinates into its dataset — dataset reads are
+    // live, so the crumb remains a correct ROUTE link as the app navigates.
+    for (const key of payload.paths) {
+      if (navLink[key] !== undefined) {
+        this.props.link$.el.dataset[key] = navLink[key];
+      }
+    }
   }
 
-  static navBreadcrumb$initBreadcrumbs(e) {
-    const { navLinks, routeData } = e.payload;
-
-    const breacrumbObjs = this.navBreadcrumb$getBreadcrumbObjs(navLinks);
-
-    const addBreadcrumbs = (bcObj) => {
-      const { bcProps, navLevel } = bcObj;
-      this.appendView(
-        new NavBreadcrumbItem({
-          bcProps,
-          navLevel,
-          navLinks,
-          initPayload: e.payload,
-          routeData,
-        }),
-        '.breadcrumbs-list',
-      );
-    };
-
-    breacrumbObjs.forEach(addBreadcrumbs);
+  navBreadcrumbView$UIBreadcrumbOnRendered() {
+    this.props.link$ = this.props.el$('a');
+    if (this.props.initPayload) {
+      this.navBreadcrumbView$UpdateLink({ payload: this.props.initPayload });
+    }
   }
 }

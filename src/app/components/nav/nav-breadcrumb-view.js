@@ -1,26 +1,25 @@
 import { ViewStream } from 'spyne';
 import { NavBreadcrumbViewTraits } from 'traits/nav/nav-breadcrumb-view-traits.js';
-import BCTmpl from './templates/nav-breadcrumb-view.tmpl.html';
-
+import BreadcrumbTmpl from './templates/nav-breadcrumb-item.tmpl.html';
 export class NavBreadcrumbView extends ViewStream {
   constructor(props = {}) {
-    props.tagName = 'nav';
-    props.class = 'breadcrumbs';
-    props.template = BCTmpl;
+    props.tagName = 'li';
+    props.class = 'breadcrumb-item';
     props.traits = [NavBreadcrumbViewTraits];
-
-    props.channels = ['CHANNEL_APP', 'CHANNEL_ROUTE'];
-    props['aria-label'] = 'breadcrumb';
+    props.channels = ['CHANNEL_ROUTE'];
+    props.template = BreadcrumbTmpl;
     super(props);
   }
 
   addActionListeners() {
-    return [['CHANNEL_APP_INIT_EVENT', 'navBreadcrumb$OnAppInitEvent']];
+    return [['CHANNEL_ROUTE_.*_EVENT', 'navBreadcrumbView$UpdateLink']];
   }
 
   broadcastEvents() {
-    return [];
+    return [['a', 'click']];
   }
 
-  onRendered() {}
+  onRendered() {
+    this.navBreadcrumbView$UIBreadcrumbOnRendered();
+  }
 }
