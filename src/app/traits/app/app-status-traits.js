@@ -1,14 +1,4 @@
 import { SpyneTrait, ChannelPayloadFilter, safeClone } from 'spyne';
-import {
-  compose,
-  find,
-  isNil,
-  toPairs,
-  pick,
-  reject,
-  reduce,
-  propEq,
-} from 'ramda';
 
 export class AppStatusTraits extends SpyneTrait {
   constructor(context) {

@@ -224,8 +224,10 @@ function getWebpackPlugins({
     // issues show as warnings in the build output, they don't break `npm start`.
     plugins.push(
       new CmsAdapterWebpack(),
+      // configType 'flat' is required for ESLint 9 — without it the plugin
+      // looks for a legacy .eslintrc and ignores eslint.config.js.
+      new ESLintPlugin({ configType: 'flat', failOnError: false }),
     );
-    // new ESLintPlugin({ failOnError: false }), REMOVING FOR NOW TO DEFER CONFIG FORMATTING
   }
 
   return plugins;

@@ -6,7 +6,8 @@ export class FormContactUsView extends ViewStream {
     props.traits = [FormContactUsTraits];
     props.channels = ['CHANNEL_UI'];
     props.mode = 'api';
-    props.apiUrl = 'http://localhost:8223/mock/contact';
+    // Point this at your own endpoint. Submissions POST here as JSON.
+    props.apiUrl = '/api/contact';
 
     super(props);
   }
