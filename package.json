@@ -13,7 +13,7 @@
     "test": "web-test-runner --config web-test-runner.config.js"
   },
   "dependencies": {
-    "dompurify": "^3.2.4",
+    "dompurify": "^3.4.17",
     "ramda": "^0.30.1",
     "rxjs": "^7.8.1",
     "spyne": "^0.26.6"
